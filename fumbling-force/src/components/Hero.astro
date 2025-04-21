@@ -1,0 +1,51 @@
+---
+import Badge from "../components/Badge.astro"
+import LinkedInIcon from "../assets/Linkedln.astro"
+import MailIcon from "../assets/Mail.astro"
+import SocialPill from "../components/SocialPill.astro"
+import GithubIcon from "../assets/Github.astro"
+---
+
+<div class="max-w-xl">
+  <div class="flex gap-4 mb-4">
+    <img
+      class="rounded-full shadow-lg size-24"
+      src="/images/merounded.png"
+      alt=""
+    />
+    <a
+      href="https://www.linkedin.com/in/rafael-basanta-gonz%C3%A1lez-755b092a6/"
+      target="_blank"
+      rel="noopener"
+      class="flex items-center transition md:justify-center md:hover:scale-105"
+    >
+      <Badge>Disponible para trabajar</Badge>
+    </a>
+  </div>
+  <h1
+    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+  >
+    Rafael Basanta González
+  </h1>
+  <p
+    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
+  >
+    +4 años de experiencia. <strong
+      >Desarrollador Full-Stack</strong
+    > residente en Santander, España. Especializado en el diseño, desarrollo y mantenimiento de aplicaciones y sitios web. 
+  </p>
+  <nav class="flex flex-wrap gap-4 mt-8">
+    <SocialPill href="mailto:rafabasanta@hotmail.com">
+      <MailIcon class="size-4" />
+      Contáctame
+    </SocialPill>
+    <SocialPill href="https://github.com/raafa12">
+      <GithubIcon class="size-4" />
+      Mi perfil
+    </SocialPill>
+    <SocialPill href="https://www.linkedin.com/in/rafael-basanta-gonz%C3%A1lez-755b092a6/">
+      <LinkedInIcon class="size-4" />
+      LinkedIn
+    </SocialPill>
+  </nav>
+</div>

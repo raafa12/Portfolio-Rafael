@@ -1,0 +1,36 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+const EXPERIENCE = [
+  {
+    date: "2020 - 2022",
+    title: "UX Designer",
+    company: "Northmetric digital",
+    description:
+      "Startup local dedicada al marketing digital en la que adopte multitud de roles: Web designer, Full-stack developer, E-commerce developer, Graphic designer, SEO/SEM Manager... "
+  },
+  {
+    date: "2022 - 2024",
+    title: "CEO",
+    company: "BASANTA TAUSIA SL",
+    description:
+      "Empresa de comercio electrónico fundada en solitario donde pude aplicar los conocimientos adquiridos en mi primera experiencia profesional.",
+  },
+  {
+    date: "Actualmente",
+    title: "Operador Técnico de Sonido en Transmisiones Radiales",
+    company: "Cope Cantabria",
+    description:
+      "Responsable de  instalación, operación y mantenimiento de los equipos de sonido, así como de la calidad del audio en retransmisiones deportivas.",
+  },
+]
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>
