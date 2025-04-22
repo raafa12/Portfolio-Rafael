@@ -1,0 +1,22 @@
+
+---
+import MailIcon from "../assets/Mail.astro"
+import LinkedInIcon from "../assets/Linkedln.astro"
+import PhoneIcon from "../assets/Phone.astro"
+---
+
+<section class="flex flex-col items-center justify-center gap-6 text-center text-gray-700 dark:text-gray-300 py-16">
+  <h2 class="text-3xl font-bold text-green-800 dark:text-green-300">Contáctame</h2>
+  <p class="max-w-xl text-lg">¿Quieres trabajar conmigo o simplemente decir hola? ¡Estoy disponible!</p>
+  <div class="flex flex-col sm:flex-row gap-4 items-center justify-center mt-4">
+    <a href="mailto:rafabasanta@hotmail.com" class="flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 text-green-800 hover:bg-green-200 transition">
+      <MailIcon class="size-5" /> rafabasanta@hotmail.com
+    </a>
+    <a href="tel:+34600000000" class="flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 text-green-800 hover:bg-green-200 transition">
+      <PhoneIcon class="size-5" /> +34 600 00 00 00
+    </a>
+    <a href="https://www.linkedin.com/in/rafael-basanta-gonz%C3%A1lez-755b092a6/" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 text-green-800 hover:bg-green-200 transition">
+      <LinkedInIcon class="size-5" /> LinkedIn
+    </a>
+  </div>
+</section>
