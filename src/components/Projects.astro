@@ -1,15 +1,15 @@
 ---
 import GitHub from "../assets/Github.astro"
-import NextJS from "../assets/NextJS.astro"
+import AstroIcon from "../assets/Astro.astro"
 import Tailwind from "../assets/Tailwind.astro"
 import Link from "../assets/Link.astro"
 import LinkButton from "./LinkButton.astro"
 
 const TAGS = {
-  NEXT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: NextJS,
+  ASTRO: {
+    name: "Astro",
+    class: "bg-[#FF5D01] text-white",
+    icon: AstroIcon,
   },
   TAILWIND: {
     name: "Tailwind CSS",
@@ -19,13 +19,13 @@ const TAGS = {
 }
 const PROJECTS = [
   {
-    title: "Club Baloncesto Calasanz Website",
+    title: "Club Baloncesto Calasanz - Website",
     description:
       "Proyecto para digitalizar la sección de baloncesto del club deportivo Calasanz Santander. Creado desde cero con Astro y Tailwind CSS.",
-    link: "https://svgl.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
+    link: "https://baloncestocalasanz.netlify.app/",
+    github: "https://github.com/raafa12/Baloncesto-Calasanz",
     image: "/projects/svgl.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    tags: [TAGS.ASTRO, TAGS.TAILWIND],
   },
   {
     title: "Machos Barber Shop - Aplicación móvil",
@@ -34,7 +34,7 @@ const PROJECTS = [
     link: "https://adventjs.dev",
     github: "https://github.com/pheralb/svgl",
     image: "/projects/adventjs.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    tags: [TAGS.ASTRO, TAGS.TAILWIND],
   },
 ]
 ---
