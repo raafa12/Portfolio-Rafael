@@ -1,48 +1,40 @@
-# Astro Starter Kit: Basics
+# 🚀 Portfolio Personal - Rafael Basanta
 
-```sh
-npm create astro@latest -- --template basics
-```
+¡Bienvenido a mi portfolio personal! Un sitio web moderno y responsive que muestra mis habilidades como desarrollador Full Stack.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## ✨ Demo en Vivo
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+🌐 **[Ver Portfolio](https://portfoliorafaelbasanta.netlify.app/)**
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## 🛠️ Tecnologías Utilizadas
 
-## 🚀 Project Structure
+- **[Astro](https://astro.build/)** 
+- **[Tailwind CSS](https://tailwindcss.com/)** 
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🎯 Características
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- ⚡ **Rendimiento optimizado** con Astro
+- 📱 **Diseño completamente responsive**
+- 🎨 **Interfaz moderna y limpia** con Tailwind CSS
+- 🔍 **SEO optimizado**
+- ♿ **Accesible y semántico**
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🌟 Sobre Mí
 
-## 🧞 Commands
+Soy un desarrollador Full Stack apasionado por crear experiencias web excepcionales. Me especializo en tecnologías modernas y siempre busco aprender y mejorar mis habilidades.
 
-All commands are run from the root of the project, from a terminal:
+## 🤝 Conecta Conmigo
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- 💼 **LinkedIn**: [Tu LinkedIn](https://www.linkedin.com/in/rafael-basanta-gonz%C3%A1lez-755b092a6/)
+- 🐙 **GitHub**: [Tu GitHub](https://github.com/raafa12)
+- 📸 **Instagram**: [Tu Twitter](https://www.instagram.com/rafabasanta/)
+- 📧 **Email**: rafabasanta@hotmail.com
 
-## 👀 Want to learn more?
+## 📄 Licencia
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+
+---
+
+⭐ **¡No olvides dar una estrella si te gusta el proyecto!** ⭐
+
