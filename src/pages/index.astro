@@ -10,22 +10,20 @@ import Briefcase from "../assets/Briefcase.astro"
 import Projects from "../components/Projects.astro"
 import CodeIcon from "../assets/Code.astro"
 import ProfileCheck from "../assets/ProfileCheck.astro"
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout
   title="Porfolio de Rafael"
   description=""
 >
-  <main class="px-4">
-    <SectionContainer class="pt-28 pb-16 md:pt-36 md:pb-36">
-      <Hero>
-      </slot>
-    </Hero>
-    </SectionContainer>
-    <div class="space-y-24">
+  <main class="pb-12">
+    <!-- Hero Section - Centrado y compacto -->
+    <section class="flex items-center justify-center min-h-[60vh] md:min-h-[65vh] px-4 pt-8">
+      <Hero />
+    </section>
+    
+    <!-- Resto de secciones con más ancho -->
+    <div class="px-4 space-y-12 max-w-6xl mx-auto">
       <SectionContainer id="experiencia">
         <TitleSection>
           <Briefcase class="size-8" />
@@ -49,7 +47,6 @@ import ProfileCheck from "../assets/ProfileCheck.astro"
         </TitleSection>
         <AboutMe />
       </SectionContainer>
-
     </div>
   </main>
 </Layout>
