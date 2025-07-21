@@ -9,17 +9,19 @@
   --primary-green-light: rgb(187, 247, 208);
   
   /* Colores del tema claro (Solar Brillante) */
-  --sun-yellow: #ffe28a;
-  --sun-gold: #ffc978;
-  --sun-orange: #ffae74;
-  --sun-white: #fffaf2;
-  --sun-glow: rgba(255, 210, 140, 0.3);
-  --sun-highlight: rgba(255, 200, 120, 0.15);
-  --text-dark: #2e2100;
+  --primary-yellow: #ffc300;
+  --primary-orange: #ff5833;
+  --primary-red: #c70038;
+  --primary-wine: #920c3f;
+  --primary-purple: #581845;
+  --space-white: #fff9f5;
+  --space-glow: rgba(255, 195, 0, 0.2);
+  --space-highlight: rgba(199, 0, 56, 0.1);
+  --text-dark: #1a1a2e;
 }
 
 /* ============================= */
-/* 🌞 MODO CLARO (SOLAR BRILLANTE) */
+/* 🌞 MODO CLARO (ESPACIAL LUMINOSO) */
 /* ============================= */
 
 :root {
@@ -37,12 +39,12 @@
   width: 200%;
   height: 200%;
   background: linear-gradient(
-    45deg,
+    135deg,
     #fffaf2 0%,
-    #ffeac2 20%,
-    #ffdeab 40%,
-    #ffc978 60%,
-    #ffb47c 80%,
+    #ffe8e8 25%,
+    #ffead0 40%,
+    #ffd8a8 60%,
+    #ffc86b 80%,
     #fffaf2 100%
   );
   animation: gradientShiftLight 30s ease-in-out infinite;
@@ -60,8 +62,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 20% 80%, rgba(255, 223, 153, 0.12) 0%, transparent 70%),
-              radial-gradient(circle at 80% 20%, rgba(255, 200, 120, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle at 20% 80%, rgba(255, 195, 0, 0.2) 0%, transparent 70%),
+              radial-gradient(circle at 80% 20%, rgba(255, 88, 51, 0.15) 0%, transparent 70%);
   z-index: -9;
   opacity: 1;
   animation: sunRaysMove 50s ease-in-out infinite;
@@ -84,7 +86,7 @@
 .light-nebula-1 {
   width: 900px;
   height: 700px;
-  background: radial-gradient(ellipse, rgba(255, 210, 140, 0.25), rgba(255, 174, 116, 0.12), transparent 70%);
+  background: radial-gradient(ellipse, rgba(255, 195, 0, 0.2), rgba(255, 88, 51, 0.1), transparent 70%);
   top: -20%;
   right: -20%;
 }
@@ -92,7 +94,7 @@
 .light-nebula-2 {
   width: 800px;
   height: 600px;
-  background: radial-gradient(ellipse, rgba(255, 174, 116, 0.18), rgba(255, 223, 153, 0.1), transparent 70%);
+  background: radial-gradient(ellipse, rgba(199, 0, 56, 0.15), rgba(146, 12, 63, 0.1), transparent 70%);
   bottom: -20%;
   left: -20%;
 }
@@ -100,15 +102,15 @@
 .light-nebula-3 {
   width: 700px;
   height: 500px;
-  background: radial-gradient(ellipse, rgba(255, 239, 200, 0.22), rgba(255, 210, 140, 0.12), transparent 70%);
+  background: radial-gradient(ellipse, rgba(88, 24, 69, 0.15), rgba(199, 0, 56, 0.1), transparent 70%);
   top: 30%;
   left: 40%;
 }
 
 :not(.dark) .section-card {
-  background: rgba(255, 250, 242, 0.6);
-  border: 1px solid rgba(255, 210, 140, 0.2);
-  box-shadow: 0 8px 32px rgba(255, 200, 120, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 195, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(199, 0, 56, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 :not(.dark) .section-card::before {
@@ -119,10 +121,68 @@
   right: 0;
   bottom: 0;
   background: linear-gradient(135deg,
-    rgba(255, 220, 160, 0.05) 0%,
-    rgba(255, 210, 140, 0.03) 50%,
-    rgba(255, 180, 100, 0.02) 100%);
+    rgba(255, 195, 0, 0.08) 0%,
+    rgba(255, 88, 51, 0.05) 50%,
+    rgba(199, 0, 56, 0.03) 100%);
   z-index: -1;
+}
+
+/* === Light Theme Typography & Accent === */
+
+:not(.dark) body {
+  color: #2e2100; /* warm deep brown for readability */
+}
+
+:not(.dark) h1,
+:not(.dark) h2,
+:not(.dark) h3,
+:not(.dark) h4,
+:not(.dark) h5,
+:not(.dark) h6 {
+  color: var(--primary-wine); /* deep wine headings */
+}
+
+:not(.dark) a {
+  color: var(--primary-orange);
+  transition: color 0.2s ease-in-out;
+}
+
+:not(.dark) a:hover {
+  color: var(--primary-red);
+}
+
+:not(.dark) button,
+:not(.dark) .btn-primary {
+  background-color: var(--primary-yellow);
+  color: #1a1a2e;
+}
+
+:not(.dark) button:hover,
+:not(.dark) .btn-primary:hover {
+  background-color: var(--primary-orange);
+  color: #fff;
+}
+
+/* ☀️  Solar flares for added depth */
+.solar-flare {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  filter: blur(100px);
+  opacity: 0.9;
+  z-index: -6;
+  animation: rotateFlare 80s linear infinite;
+}
+
+.solar-flare-1 { top: 10%; left: -20%; background: radial-gradient(circle, rgba(255,220,100,0.35) 0%, rgba(255,140,40,0.2) 40%, transparent 70%); }
+.solar-flare-2 { bottom: -15%; right: -25%; background: radial-gradient(circle, rgba(255,160,60,0.3) 0%, rgba(255,60,0,0.15) 45%, transparent 75%); }
+
+@keyframes rotateFlare {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 /* === 🌚 MODO OSCURO ESPACIAL === */
@@ -163,9 +223,9 @@
 .cosmic-dust {
   position: fixed;
   background: radial-gradient(circle, 
-    rgba(100, 120, 180, 0.2) 0%, 
-    rgba(60, 90, 150, 0.4) 50%, 
-    rgba(30, 50, 100, 0.6) 100%);
+    rgba(200, 210, 255, 0.4) 0%, 
+    rgba(180, 200, 255, 0.3) 50%, 
+    rgba(160, 190, 255, 0.2) 100%);
   border-radius: 50%;
   pointer-events: none;
   z-index: -5;
@@ -176,9 +236,9 @@
 .sun-particle {
   position: fixed;
   background: radial-gradient(circle, 
-    rgba(30, 50, 100, 0.3) 0%, 
-    rgba(60, 90, 150, 0.5) 50%, 
-    rgba(100, 120, 180, 0.7) 100%);
+    rgba(255, 255, 255, 0.8) 0%, 
+    rgba(230, 230, 255, 0.6) 50%, 
+    rgba(200, 210, 255, 0.4) 100%);
   border-radius: 50%;
   pointer-events: none;
   z-index: -4;
@@ -703,9 +763,16 @@
 
 /* Tema claro */
 :not(.dark) .project-card {
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(134, 239, 172, 0.15);
-  box-shadow: 0 8px 25px rgba(134, 239, 172, 0.08);
+  background: rgba(255, 255, 255, 0.6); /* stronger for readability */
+  border: 1px solid rgba(255, 195, 0, 0.25);
+  box-shadow: 0 10px 30px rgba(255, 160, 60, 0.12);
+}
+
+@media (max-width: 640px) {
+  :not(.dark) .project-card {
+    background: rgba(255, 255, 255, 0.8); /* higher opacity on small screens */
+    border-color: rgba(255, 195, 0, 0.35);
+  }
 }
 
 :not(.dark) .project-card::after {
@@ -738,10 +805,17 @@
     0 0 20px rgba(134, 239, 172, 0.08);
 }
 
-/* Tema oscuro para proyectos (mantener) */
+/* Tema oscuro para proyectos */
 .dark .project-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(81, 228, 184, 0.08);
+  background: rgba(255, 255, 255, 0.05); /* slightly brighter for dark bg */
+  border: 1px solid rgba(81, 228, 184, 0.15);
+}
+
+@media (max-width: 640px) {
+  .dark .project-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(81, 228, 184, 0.25);
+  }
 }
 
 .dark .project-card::after {

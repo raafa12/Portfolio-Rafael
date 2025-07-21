@@ -6,31 +6,31 @@
   <div class="flex items-center justify-center">
     <span class="relative inline-flex overflow-hidden rounded-full p-[1px] shadow-lg cursor-pointer transition-all duration-500 hover:shadow-xl hover:scale-105">
       <!-- Animated border -->
-      <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_180deg_at_50%_50%,rgba(81,228,184,0.8)_0%,rgba(120,180,255,0.6)_25%,rgba(81,228,184,0.4)_50%,rgba(33,85,78,0.6)_75%,rgba(81,228,184,0.8)_100%)] group-hover:animate-[spin_2s_linear_infinite]"></span>
+      <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_180deg_at_50%_50%,rgba(255,195,0,0.8)_0%,rgba(255,88,51,0.6)_25%,rgba(255,195,0,0.4)_50%,rgba(199,0,56,0.6)_75%,rgba(255,195,0,0.8)_100%)] dark:bg-[conic-gradient(from_180deg_at_50%_50%,rgba(81,228,184,0.8)_0%,rgba(120,180,255,0.6)_25%,rgba(81,228,184,0.4)_50%,rgba(33,85,78,0.6)_75%,rgba(81,228,184,0.8)_100%)] group-hover:animate-[spin_2s_linear_infinite]"></span>
       
       <!-- Badge content -->
       <div class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full backdrop-blur-xl whitespace-nowrap transition-all duration-300 relative z-10
-                  bg-gradient-to-r from-green-50/90 via-white/80 to-green-50/90 
-                  dark:from-gray-900/80 dark:via-gray-800/90 dark:to-gray-900/80
-                  text-green-800 dark:text-green-200
-                  border border-green-200/50 dark:border-green-400/20
-                  hover:from-green-100/90 hover:via-green-50/90 hover:to-green-100/90
+                  bg-gradient-to-r from-[#FFF9F5]/90 via-white/80 to-[#FFF9F5]/90 dark:from-gray-900/80 dark:via-gray-800/90 dark:to-gray-900/80 
+                  dark:from-gray-900/80 dark:via-gray-800/90 dark:bg-gray-900/80
+                  text-[#920C3F] dark:text-green-200 dark:text-green-200
+                  border border-[#FFC300]/40 dark:border-green-400/20 dark:border-green-400/20
+                  hover:from-[#FFE8E8]/90 hover:via-[#FFF9F5]/90 hover:to-[#FFE8E8]/90 dark:hover:from-gray-800/90 dark:hover:via-gray-700/90 dark:hover:to-gray-800/90
                   dark:hover:from-gray-800/90 dark:hover:via-gray-700/90 dark:hover:to-gray-800/90
-                  hover:text-green-900 dark:hover:text-green-100
-                  hover:border-green-300/70 dark:hover:border-green-300/30
+                  hover:text-[#C70038] dark:hover:text-green-100 dark:hover:text-green-100
+                  hover:border-[#FFC86B]/70 dark:hover:border-green-300/30 dark:hover:border-green-300/30
                   shadow-sm hover:shadow-lg">
         
         <!-- Pulsing dot indicator -->
         <span class="relative flex h-2.5 w-2.5 mr-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400/75 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-gradient-to-r from-green-400 to-green-500 shadow-sm"></span>
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFC300]/75 dark:bg-green-400/75 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-gradient-to-r from-[#FFC300] to-[#FF5833] dark:from-green-400 dark:to-green-500 shadow-sm"></span>
         </span>
         
         <slot />
       </div>
       
       <!-- Subtle glow effect -->
-      <div class="absolute inset-0 rounded-full bg-gradient-to-r from-green-400/20 via-transparent to-green-400/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div class="absolute inset-0 rounded-full bg-gradient-to-r from-[#FFC300]/20 via-transparent to-[#FF5833]/20 dark:from-green-400/20 dark:to-green-400/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     </span>
   </div>
 </a>
