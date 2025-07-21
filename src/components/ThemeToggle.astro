@@ -25,7 +25,7 @@ import MoonIcon from "../assets/Moon.astro"
   
   <!-- Icons container -->
   <div class="relative z-10 flex items-center justify-center">
-    <SunIcon id="light-icon" class="size-5 text-gray-700 dark:hidden" />
+    <SunIcon id="light-icon" class="size-5 text-amber-600 dark:hidden" />
     <MoonIcon id="dark-icon" class="size-5 hidden dark:block text-gray-300" />
   </div>
   
@@ -34,6 +34,16 @@ import MoonIcon from "../assets/Moon.astro"
     <div class="absolute top-1 left-1/4 w-1/2 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
   </div>
 </button>
+
+<!-- Sun Rays Effect -->
+<div class="sun-rays"></div>
+
+<!-- Solar Flares -->
+<div class="solar-flare solar-flare-1"></div>
+<div class="solar-flare solar-flare-2"></div>
+
+<!-- Sun Particles Container -->
+<div id="sun-particles"></div>
 
 <script is:inline>
   // Set default theme to dark if not set
@@ -51,6 +61,50 @@ import MoonIcon from "../assets/Moon.astro"
     document.documentElement.classList.remove('dark');
   }
 
+  // Create sun particles
+  function createSunParticles() {
+    const container = document.getElementById('sun-particles');
+    if (!container) return;
+    
+    // Clear existing particles
+    container.innerHTML = '';
+    
+    // Only create particles for light theme
+    if (!document.documentElement.classList.contains('dark')) {
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'sun-particle';
+        
+        // Random size between 2px and 6px
+        const size = Math.random() * 4 + 2;
+        
+        // Random position
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        
+        // Random animation duration between 10s and 20s
+        const duration = Math.random() * 10 + 10;
+        
+        // Random delay
+        const delay = Math.random() * -20;
+        
+        // Apply styles
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.animationDuration = `${duration}s`;
+        particle.style.animationDelay = `${delay}s`;
+        
+        // Random color from yellow to orange
+        const hue = Math.floor(Math.random() * 30) + 20; // 20-50 (yellow to orange)
+        particle.style.background = `hsl(${hue}, 100%, 70%)`;
+        
+        container.appendChild(particle);
+      }
+    }
+  }
+
   // Toggle theme on button click
   document.getElementById('theme-toggle').addEventListener('click', () => {
     // Toggle the theme
@@ -61,5 +115,22 @@ import MoonIcon from "../assets/Moon.astro"
       document.documentElement.classList.add('dark');
       localStorage.theme = 'dark';
     }
+    
+    // Recreate particles when switching to light theme
+    if (!document.documentElement.classList.contains('dark')) {
+      createSunParticles();
+    }
+  });
+
+  // Initial creation of particles
+  createSunParticles();
+  
+  // Recreate particles on window resize
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      createSunParticles();
+    }, 250);
   });
 </script>
