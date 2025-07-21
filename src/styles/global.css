@@ -8,7 +8,7 @@
   overflow-x: hidden;
 }
 
-/* Animated gradient background (sin rotación) */
+/* Animated gradient background */
 .dark::before {
   content: '';
   position: fixed;
@@ -126,73 +126,99 @@
   animation: nebulaFloat3 35s ease-in-out infinite;
 }
 
-/* Floating orbs */
-.floating-orb {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(2px);
-  z-index: -6;
+@keyframes nebulaFloat1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-30px, 20px) rotate(180deg); }
 }
 
-/* Shooting stars (sin cambios) */
-/* ... Incluye tu código original para .shooting-star aquí ... */
+@keyframes nebulaFloat2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(20px, -30px) rotate(-180deg); }
+}
 
-/* Cards y sections */
-.dark .section {
-  position: relative;
-  background: rgba(10, 11, 20, 0.7);
+@keyframes nebulaFloat3 {
+  0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+  50% { transform: translate(-45%, -55%) rotate(180deg); }
+}
+
+/* Secciones rediseñadas - más elegantes y sutiles */
+.section-card {
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
-  border-radius: 16px;
-  border: 1px solid rgba(81, 228, 184, 0.15);
-  margin: 2rem 0;
-  padding: 2.5rem;
-  transition: all 0.4s ease;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.dark .section:hover {
-  background: rgba(10, 11, 20, 0.85);
-  border-color: rgba(81, 228, 184, 0.25);
-  transform: translateY(-2px);
-  box-shadow: 
-    0 16px 48px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(81, 228, 184, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-.dark .card {
-  background: rgba(13, 15, 26, 0.9);
-  border: 1px solid rgba(81, 228, 184, 0.15);
-  box-shadow: 
-    0 4px 24px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(81, 228, 184, 0.1);
-  backdrop-filter: blur(16px);
+  border: 1px solid rgba(81, 228, 184, 0.1);
+  border-radius: 24px;
   position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.dark .card:hover {
+.section-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(81, 228, 184, 0.02) 0%,
+    rgba(33, 85, 78, 0.01) 50%,
+    rgba(81, 228, 184, 0.02) 100%);
+  z-index: -1;
+}
+
+.section-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(81, 228, 184, 0.2);
+  background: rgba(255, 255, 255, 0.08);
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    0 0 24px rgba(81, 228, 184, 0.2),
-    inset 0 1px 0 rgba(81, 228, 184, 0.2);
-  border-color: rgba(81, 228, 184, 0.3);
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(81, 228, 184, 0.1);
 }
 
-/* Brillo en borde al hacer hover */
-.dark .card:hover::after {
+.section-card:hover::before {
+  background: linear-gradient(135deg, 
+    rgba(81, 228, 184, 0.04) 0%,
+    rgba(33, 85, 78, 0.02) 50%,
+    rgba(81, 228, 184, 0.04) 100%);
+}
+
+/* Efectos para proyectos */
+.project-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(81, 228, 184, 0.08);
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::after {
   content: '';
   position: absolute;
   top: -2px;
   left: -2px;
   right: -2px;
   bottom: -2px;
+  background: linear-gradient(45deg, 
+    rgba(81, 228, 184, 0.1),
+    transparent 30%,
+    rgba(81, 228, 184, 0.05) 70%,
+    transparent);
   border-radius: inherit;
-  background: linear-gradient(120deg, rgba(81, 228, 184, 0.3), rgba(120, 180, 255, 0.2));
-  opacity: 0.6;
-  filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
   z-index: -1;
+}
+
+.project-card:hover::after {
+  opacity: 1;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(81, 228, 184, 0.15);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
 }
 
 /* Aurora line */
@@ -208,6 +234,7 @@
   pointer-events: none;
   animation: auroraMove 40s ease-in-out infinite;
 }
+
 @keyframes auroraMove {
   0% { transform: translateX(0) translateY(0); }
   50% { transform: translateX(-50px) translateY(30px); }
@@ -243,6 +270,7 @@
   filter: blur(20px);
   animation: glowShift 40s ease-in-out infinite;
 }
+
 @keyframes glowShift {
   0%, 100% { transform: translateX(-50%) scale(1); }
   50% { transform: translateX(-45%) scale(1.05); }
