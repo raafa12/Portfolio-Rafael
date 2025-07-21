@@ -8,9 +8,29 @@
 
 ## 🛠️ Tecnologías Utilizadas
 
-- **[Astro](https://astro.build/)** 
-- **[Tailwind CSS](https://tailwindcss.com/)** 
+<a href="https://astro.build/" target="_blank">
+  <img src="https://img.shields.io/badge/Astro-000000?style=flat-square&logo=astro&logoColor=white" alt="Astro Badge"/>
+</a>
+<a href="https://tailwindcss.com/" target="_blank">
+  <img src="https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS Badge"/>
+</a>
+<a href="https://developer.mozilla.org/docs/Web/HTML" target="_blank">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5 Badge"/>
+</a>
+<a href="https://developer.mozilla.org/docs/Web/CSS" target="_blank">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3 Badge"/>
+</a>
+<a href="https://developer.mozilla.org/docs/Web/JavaScript" target="_blank">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript Badge"/>
+</a>
 
+## 📫 Contacto
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rafael-basanta-gonzález-755b092a6)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/raafa12)
+[![Email](https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:rafabasanta@hotmail.com)
+
+---
 ## 🎯 Características
 
 - ⚡ **Rendimiento optimizado** con Astro
@@ -19,16 +39,6 @@
 - 🔍 **SEO optimizado**
 - ♿ **Accesible y semántico**
 
-## 🌟 Sobre Mí
-
-Soy un desarrollador Full Stack apasionado por crear experiencias web excepcionales. Me especializo en tecnologías modernas y siempre busco aprender y mejorar mis habilidades.
-
-## 🤝 Conecta Conmigo
-
-- 💼 **LinkedIn**: [Tu LinkedIn](https://www.linkedin.com/in/rafael-basanta-gonz%C3%A1lez-755b092a6/)
-- 🐙 **GitHub**: [Tu GitHub](https://github.com/raafa12)
-- 📸 **Instagram**: [Tu Twitter](https://www.instagram.com/rafabasanta/)
-- 📧 **Email**: rafabasanta@hotmail.com
 
 ## 📄 Licencia
 
