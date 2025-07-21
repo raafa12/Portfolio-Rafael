@@ -772,6 +772,29 @@
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
 }
 
+/* Estilos para las tarjetas de proyecto */
+.project-card {
+  background: rgba(255, 250, 242, 0.5);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos para el tema oscuro */
+.dark .project-card {
+  background: rgba(26, 27, 46, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dark .project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(81, 228, 184, 0.15);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+}
+
 /* Aurora line adaptada para tema claro */
 .aurora-line {
   position: fixed;
