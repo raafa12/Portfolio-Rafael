@@ -25,51 +25,29 @@ const { description, title } = Astro.props
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap");
     </style>
   </head>
-  <body class="bg-gradient-to-br from-amber-50 to-orange-50 dark:bg-[#0a0b14] text-amber-950 dark:text-white font-[Inter] transition-colors duration-300">
-    <!-- Background Elements -->
-    <div class="fixed inset-0 -z-10">
-      <!-- Dark Theme Elements -->
-      <div class="dark:block hidden">
-        <!-- Starfield Background -->
-        <div class="starfield-container"></div>
-        
-        <!-- Nebula Effects -->
-        <div class="nebula nebula-1"></div>
-        <div class="nebula nebula-2"></div>
-        <div class="nebula nebula-3"></div>
-        
-        <!-- Constellation Lines -->
-        <div class="constellation-lines"></div>
-        
-        <!-- Floating Particles -->
-        <div class="space-particle particle-1"></div>
-        <div class="space-particle particle-2"></div>
-        <div class="space-particle particle-3"></div>
-        <div class="space-particle particle-4"></div>
-        <div class="space-particle particle-5"></div>
-        <div class="space-particle particle-6"></div>
+  <body class="bg-gray-100 dark:bg-[#0a0b14] text-gray-900 dark:text-white font-[Inter]">
+    <!-- Starfield Background -->
+    <div class="starfield-container"></div>
+    
+    <!-- Nebula Effects -->
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="nebula nebula-3"></div>
+    
+    <!-- Constellation Lines -->
+    <div class="constellation-lines"></div>
+    
+    <!-- Floating Particles -->
+    <div class="space-particle particle-1"></div>
+    <div class="space-particle particle-2"></div>
+    <div class="space-particle particle-3"></div>
+    <div class="space-particle particle-4"></div>
+    <div class="space-particle particle-5"></div>
+    <div class="space-particle particle-6"></div>
 
-        <div class="aurora-line"></div>
-        <div class="constellation-overlay"></div>
-        <div class="stardust-glow"></div>
-      </div>
-
-      <!-- Light Theme Elements -->
-      <div class="dark:hidden block">
-        <!-- Sun Rays Effect -->
-        <div class="sun-rays"></div>
-        
-        <!-- Solar Flares -->
-        <div class="solar-flare solar-flare-1"></div>
-        <div class="solar-flare solar-flare-2"></div>
-        
-        <!-- Sun Particles Container -->
-        <div id="sun-particles"></div>
-        
-        <!-- Subtle Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-br from-amber-50/80 to-orange-50/80"></div>
-      </div>
-    </div>
+    <div class="aurora-line"></div>
+    <div class="constellation-overlay"></div>
+    <div class="stardust-glow"></div>
     
     <div class="relative z-10 min-h-screen flex flex-col">
       <Header />

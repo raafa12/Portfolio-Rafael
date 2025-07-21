@@ -2,41 +2,137 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Dynamic Animated Background */
+/* Variables base */
 :root {
+  --primary-green: rgb(134, 239, 172);
+  --primary-green-dark: rgb(74, 222, 128);
+  --primary-green-light: rgb(187, 247, 208);
+  
+  /* Colores del tema claro (Solar Brillante) */
+  --sun-yellow: #ffe28a;
+  --sun-gold: #ffc978;
+  --sun-orange: #ffae74;
+  --sun-white: #fffaf2;
+  --sun-glow: rgba(255, 210, 140, 0.3);
+  --sun-highlight: rgba(255, 200, 120, 0.15);
+  --text-dark: #2e2100;
+}
+
+/* ============================= */
+/* 🌞 MODO CLARO (SOLAR BRILLANTE) */
+/* ============================= */
+
+:root {
+  color: var(--text-dark);
+  background: none;
   position: relative;
   overflow-x: hidden;
-  --bg-gradient-1: #fff5f5;
-  --bg-gradient-2: #ffedcc;
-  --bg-gradient-3: #ffd8a8;
-  --bg-gradient-4: #ffc178;
-  --bg-gradient-5: #ff8c42;
-  --bg-gradient-6: #ff5e62;
 }
 
-/* Light Theme */
-:root {
-  /* Sun rays effect */
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 244, 229, 0.9) 30%,
-    rgba(255, 235, 205, 0.8) 50%,
-    rgba(255, 222, 173, 0.7) 70%,
-    rgba(255, 204, 128, 0.6) 100%
+:root::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    #fffaf2 0%,
+    #ffeac2 20%,
+    #ffdeab 40%,
+    #ffc978 60%,
+    #ffb47c 80%,
+    #fffaf2 100%
   );
-  background-attachment: fixed;
-  min-height: 100vh;
+  animation: gradientShiftLight 30s ease-in-out infinite;
+  z-index: -10;
 }
 
-/* Dark Theme */
+@keyframes gradientShiftLight {
+  0%, 100% { transform: translateX(-25%) translateY(-25%); }
+  50% { transform: translateX(-50%) translateY(-50%); }
+}
+
+.sun-rays {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 80%, rgba(255, 223, 153, 0.12) 0%, transparent 70%),
+              radial-gradient(circle at 80% 20%, rgba(255, 200, 120, 0.1) 0%, transparent 70%);
+  z-index: -9;
+  opacity: 1;
+  animation: sunRaysMove 50s ease-in-out infinite;
+}
+
+@keyframes sunRaysMove {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-10px, 20px); }
+}
+
+.light-nebula {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -7;
+  opacity: 0.15;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.light-nebula-1 {
+  width: 900px;
+  height: 700px;
+  background: radial-gradient(ellipse, rgba(255, 210, 140, 0.25), rgba(255, 174, 116, 0.12), transparent 70%);
+  top: -20%;
+  right: -20%;
+}
+
+.light-nebula-2 {
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(255, 174, 116, 0.18), rgba(255, 223, 153, 0.1), transparent 70%);
+  bottom: -20%;
+  left: -20%;
+}
+
+.light-nebula-3 {
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(255, 239, 200, 0.22), rgba(255, 210, 140, 0.12), transparent 70%);
+  top: 30%;
+  left: 40%;
+}
+
+:not(.dark) .section-card {
+  background: rgba(255, 250, 242, 0.6);
+  border: 1px solid rgba(255, 210, 140, 0.2);
+  box-shadow: 0 8px 32px rgba(255, 200, 120, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+:not(.dark) .section-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+    rgba(255, 220, 160, 0.05) 0%,
+    rgba(255, 210, 140, 0.03) 50%,
+    rgba(255, 180, 100, 0.02) 100%);
+  z-index: -1;
+}
+
+/* === 🌚 MODO OSCURO ESPACIAL === */
+
 .dark {
   position: relative;
   overflow-x: hidden;
   background: none;
 }
 
-/* Animated gradient background for dark theme */
 .dark::before {
   content: '';
   position: fixed;
@@ -58,49 +154,111 @@
   z-index: -10;
 }
 
-/* Sun particles for light theme */
-.sun-particle {
+@keyframes gradientShift {
+  0%, 100% { transform: translateX(-25%) translateY(-25%); }
+  50% { transform: translateX(-50%) translateY(-50%); }
+}
+
+/* Partículas para tema claro (opuestas al oscuro) */
+.cosmic-dust {
   position: fixed;
-  background: rgba(255, 200, 100, 0.7);
+  background: radial-gradient(circle, 
+    rgba(100, 120, 180, 0.2) 0%, 
+    rgba(60, 90, 150, 0.4) 50%, 
+    rgba(30, 50, 100, 0.6) 100%);
   border-radius: 50%;
   pointer-events: none;
   z-index: -5;
-  animation: floatParticle 15s infinite linear;
+  animation: floatCosmicDust 25s infinite ease-in-out;
+  box-shadow: 0 0 15px rgba(60, 90, 150, 0.3);
+}
+
+.sun-particle {
+  position: fixed;
+  background: radial-gradient(circle, 
+    rgba(30, 50, 100, 0.3) 0%, 
+    rgba(60, 90, 150, 0.5) 50%, 
+    rgba(100, 120, 180, 0.7) 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -4;
+  animation: floatParticle 20s infinite ease-in-out;
+  box-shadow: 0 0 20px rgba(60, 90, 150, 0.4),
+              0 0 40px rgba(30, 50, 100, 0.3);
+}
+
+@keyframes floatCosmicDust {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50vh) scale(0);
+    opacity: 0;
+  }
 }
 
 @keyframes floatParticle {
   0% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(100vh);
     opacity: 0;
   }
   10% {
-    opacity: 0.8;
+    opacity: 0.9;
   }
   90% {
-    opacity: 0.8;
+    opacity: 0.9;
   }
   100% {
-    transform: translateY(-100vh) rotate(360deg);
+    transform: translateY(-50vh);
     opacity: 0;
   }
 }
 
-@keyframes gradientShift {
-  0%, 100% {
-    transform: translateX(-25%) translateY(-25%);
-  }
-  50% {
-    transform: translateX(-50%) translateY(-50%);
-  }
-}
-
-/* Starfield background - Dark Theme */
+/* Contenedor de estrellas */
 .starfield-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: -8;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Estrellas para el tema claro */
+:root:not(.dark) .starfield-container {
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 150, 50, 0.9), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 174, 116, 0.9), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255, 200, 100, 0.9), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 180, 80, 0.9), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(255, 160, 60, 0.9), transparent),
+    radial-gradient(1px 1px at 200px 100px, rgba(255, 140, 40, 0.9), transparent),
+    radial-gradient(1px 1px at 250px 50px, rgba(255, 120, 30, 0.9), transparent),
+    radial-gradient(1px 1px at 300px 90px, rgba(255, 100, 20, 0.9), transparent),
+    radial-gradient(1px 1px at 350px 120px, rgba(255, 80, 10, 0.9), transparent),
+    radial-gradient(1px 1px at 380px 40px, rgba(255, 60, 0, 0.9), transparent);
+  background-repeat: repeat;
+  background-size: 400px 300px;
+  animation: starfieldMove 40s linear infinite;
+  opacity: 1;
+  mix-blend-mode: multiply;
+  display: block !important;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Estrellas para el tema oscuro */
+.dark .starfield-container {
   background-image: 
     radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.9), transparent),
     radial-gradient(2px 2px at 40px 70px, rgba(81, 228, 184, 0.8), transparent),
@@ -115,12 +273,43 @@
   background-repeat: repeat;
   background-size: 400px 300px;
   animation: starfieldMove 40s linear infinite;
-  z-index: -8;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+  mix-blend-mode: screen;
 }
 
+/* Partículas solares */
+:not(.dark) .cosmic-dust {
+  background: radial-gradient(circle, 
+    rgba(255, 226, 138, 0.4) 0%, 
+    rgba(255, 174, 116, 0.3) 100%);
+  box-shadow: 0 0 20px rgba(255, 200, 120, 0.3);
+}
+
+:not(.dark) .sun-particle {
+  background: radial-gradient(circle, 
+    rgba(255, 255, 255, 0.9) 0%, 
+    rgba(255, 226, 138, 0.8) 50%, 
+    rgba(255, 174, 116, 0.6) 100%);
+  box-shadow: 0 0 30px rgba(255, 200, 120, 0.5),
+              0 0 60px rgba(255, 174, 116, 0.3);
+}
+
+/* Starfield para tema oscuro */
 .dark .starfield-container {
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(81, 228, 184, 0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(81, 228, 184, 0.5), transparent),
+    radial-gradient(1px 1px at 200px 100px, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 250px 50px, rgba(81, 228, 184, 0.6), transparent),
+    radial-gradient(1px 1px at 300px 90px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(0.5px 0.5px at 350px 120px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(0.5px 0.5px at 380px 40px, rgba(81, 228, 184, 0.7), transparent);
+  background-repeat: repeat;
+  background-size: 400px 300px;
+  animation: starfieldMove 40s linear infinite;
   opacity: 1;
 }
 
@@ -131,70 +320,38 @@
   left: 0;
   width: 100%;
   height: 100%;
+  background-repeat: repeat;
+  background-size: 300px 200px;
+}
+
+/* After para tema claro */
+:not(.dark) .starfield-container::after {
+  background-image: 
+    radial-gradient(0.8px 0.8px at 50px 60px, rgba(134, 239, 172, 0.5), transparent),
+    radial-gradient(0.3px 0.3px at 120px 20px, rgba(74, 222, 128, 0.6), transparent),
+    radial-gradient(0.3px 0.3px at 180px 100px, rgba(187, 247, 208, 0.4), transparent),
+    radial-gradient(0.5px 0.5px at 220px 140px, rgba(74, 222, 128, 0.3), transparent);
+  animation: starfieldMove2Light 50s linear infinite reverse;
+}
+
+/* After para tema oscuro */
+.dark .starfield-container::after {
   background-image: 
     radial-gradient(1px 1px at 50px 60px, rgba(255, 255, 255, 0.3), transparent),
     radial-gradient(0.5px 0.5px at 120px 20px, rgba(81, 228, 184, 0.4), transparent),
     radial-gradient(0.5px 0.5px at 180px 100px, rgba(255, 255, 255, 0.2), transparent),
     radial-gradient(1px 1px at 220px 140px, rgba(81, 228, 184, 0.3), transparent);
-  background-repeat: repeat;
-  background-size: 300px 200px;
   animation: starfieldMove2 60s linear infinite reverse;
 }
 
-/* Sun Rays - Light Theme */
-.sun-rays {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle at 80% 20%,
-    rgba(255, 230, 150, 0.15) 0%,
-    rgba(255, 200, 100, 0.1) 20%,
-    rgba(255, 180, 80, 0.05) 40%,
-    transparent 70%
-  );
-  z-index: -9;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+@keyframes starfieldMoveLight {
+  0% { transform: translateY(0px) translateX(0px); }
+  100% { transform: translateY(-300px) translateX(-100px); }
 }
 
-.dark .sun-rays {
-  opacity: 0;
-}
-
-/* Sun particles for light theme */
-.sun-particle {
-  position: fixed;
-  background: rgba(255, 200, 100, 0.7);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: -8;
-  animation: floatParticle 15s infinite linear;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-:not(.dark) .sun-particle {
-  opacity: 1;
-}
-
-@keyframes floatParticle {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.8;
-  }
-  90% {
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(-100vh) rotate(360deg);
-    opacity: 0;
-  }
+@keyframes starfieldMove2Light {
+  0% { transform: translate(0px, 0px); }
+  100% { transform: translate(-200px, -150px); }
 }
 
 @keyframes starfieldMove {
@@ -207,22 +364,163 @@
   100% { transform: translate(-200px, -200px); }
 }
 
-/* Nebulas - Dark Theme */
+/* Cosmic Rays - Tema Claro */
+.cosmic-rays {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(134, 239, 172, 0.12) 0%,
+      rgba(74, 222, 128, 0.08) 25%,
+      rgba(187, 247, 208, 0.04) 50%,
+      transparent 75%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(134, 239, 172, 0.08) 0%,
+      rgba(74, 222, 128, 0.06) 30%,
+      rgba(187, 247, 208, 0.03) 60%,
+      transparent 80%
+    ),
+    radial-gradient(
+      circle at 60% 60%,
+      rgba(134, 239, 172, 0.05) 0%,
+      rgba(74, 222, 128, 0.03) 40%,
+      transparent 70%
+    );
+  z-index: -9;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  animation: cosmicRaysMove 45s ease-in-out infinite;
+}
+
+:not(.dark) .cosmic-rays {
+  opacity: 1;
+}
+
+/* Sun Rays - Light Theme (mantener para compatibilidad) */
+.sun-rays {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(134, 239, 172, 0.12) 0%,
+      rgba(74, 222, 128, 0.08) 25%,
+      rgba(187, 247, 208, 0.04) 50%,
+      transparent 75%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(134, 239, 172, 0.08) 0%,
+      rgba(74, 222, 128, 0.06) 30%,
+      rgba(187, 247, 208, 0.03) 60%,
+      transparent 80%
+    );
+  z-index: -9;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  animation: cosmicRaysMove 45s ease-in-out infinite;
+}
+
+:not(.dark) .sun-rays {
+  opacity: 1;
+}
+
+.dark .sun-rays {
+  opacity: 0;
+}
+
+@keyframes cosmicRaysMove {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1); 
+    filter: blur(0px);
+  }
+  33% { 
+    transform: translate(-20px, 10px) scale(1.02); 
+    filter: blur(1px);
+  }
+  66% { 
+    transform: translate(15px, -15px) scale(0.98); 
+    filter: blur(0.5px);
+  }
+}
+
+/* Nebulas Claras - Light Theme */
+.light-nebula {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -7;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+:not(.dark) .light-nebula {
+  opacity: 0.15;
+}
+
+.light-nebula-1 {
+  width: 900px;
+  height: 700px;
+  background: radial-gradient(ellipse, rgba(134, 239, 172, 0.3), rgba(74, 222, 128, 0.15), transparent 70%);
+  top: -25%;
+  right: -25%;
+  animation: lightNebulaFloat1 40s ease-in-out infinite;
+}
+
+.light-nebula-2 {
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(74, 222, 128, 0.2), rgba(134, 239, 172, 0.1), transparent 70%);
+  bottom: -20%;
+  left: -20%;
+  animation: lightNebulaFloat2 45s ease-in-out infinite;
+}
+
+.light-nebula-3 {
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(187, 247, 208, 0.25), rgba(134, 239, 172, 0.12), transparent 70%);
+  top: 30%;
+  left: 40%;
+  animation: lightNebulaFloat3 50s ease-in-out infinite;
+}
+
+@keyframes lightNebulaFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(-40px, 30px) scale(1.05) rotate(180deg); }
+}
+
+@keyframes lightNebulaFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(30px, -40px) scale(1.03) rotate(-180deg); }
+}
+
+@keyframes lightNebulaFloat3 {
+  0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  50% { transform: translate(-45%, -55%) scale(1.02) rotate(360deg); }
+}
+
+/* Nebulas Oscuras - Dark Theme (mantener) */
 .nebula {
   position: fixed;
   border-radius: 50%;
   filter: blur(120px);
   z-index: -7;
-  opacity: 0.4;
+  opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
 
 .dark .nebula {
   opacity: 0.4;
-}
-
-:not(.dark) .nebula {
-  opacity: 0;
 }
 
 .nebula-1 {
@@ -232,48 +530,6 @@
   top: -20%;
   right: -20%;
   animation: nebulaFloat1 25s ease-in-out infinite;
-}
-
-/* Solar Flares - Light Theme */
-.solar-flare {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(80px);
-  z-index: -7;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-:not(.dark) .solar-flare {
-  opacity: 0.3;
-}
-
-.solar-flare-1 {
-  width: 1000px;
-  height: 800px;
-  background: radial-gradient(ellipse, rgba(255, 200, 100, 0.4), rgba(255, 150, 50, 0.2), transparent 70%);
-  top: -30%;
-  right: -30%;
-  animation: solarFloat1 30s ease-in-out infinite;
-}
-
-.solar-flare-2 {
-  width: 900px;
-  height: 700px;
-  background: radial-gradient(ellipse, rgba(255, 180, 80, 0.3), rgba(255, 120, 40, 0.15), transparent 70%);
-  bottom: -25%;
-  left: -25%;
-  animation: solarFloat2 35s ease-in-out infinite;
-}
-
-@keyframes solarFloat1 {
-  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-  50% { transform: translate(-40px, 30px) scale(1.05) rotate(5deg); }
-}
-
-@keyframes solarFloat2 {
-  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-  50% { transform: translate(30px, -20px) scale(1.03) rotate(-3deg); }
 }
 
 .nebula-2 {
@@ -309,18 +565,104 @@
   50% { transform: translate(-45%, -55%) rotate(180deg); }
 }
 
-/* Secciones rediseñadas - más elegantes y sutiles */
+/* Solar Flares - Light Theme (mantener para compatibilidad) */
+.solar-flare {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -7;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+:not(.dark) .solar-flare {
+  opacity: 0.12;
+}
+
+.solar-flare-1 {
+  width: 1000px;
+  height: 800px;
+  background: radial-gradient(ellipse, rgba(134, 239, 172, 0.3), rgba(74, 222, 128, 0.15), transparent 70%);
+  top: -30%;
+  right: -30%;
+  animation: solarFloat1 35s ease-in-out infinite;
+}
+
+.solar-flare-2 {
+  width: 900px;
+  height: 700px;
+  background: radial-gradient(ellipse, rgba(74, 222, 128, 0.25), rgba(187, 247, 208, 0.1), transparent 70%);
+  bottom: -25%;
+  left: -25%;
+  animation: solarFloat2 40s ease-in-out infinite;
+}
+
+@keyframes solarFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(-40px, 30px) scale(1.05) rotate(5deg); }
+}
+
+@keyframes solarFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(30px, -20px) scale(1.03) rotate(-3deg); }
+}
+
+/* Secciones adaptadas para tema claro */
 .section-card {
-  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(81, 228, 184, 0.1);
   border-radius: 24px;
   position: relative;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.section-card::before {
+/* Tema claro */
+:not(.dark) .section-card {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(134, 239, 172, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(134, 239, 172, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+:not(.dark) .section-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(134, 239, 172, 0.05) 0%,
+    rgba(74, 222, 128, 0.02) 50%,
+    rgba(187, 247, 208, 0.03) 100%);
+  z-index: -1;
+}
+
+:not(.dark) .section-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(134, 239, 172, 0.35);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 20px 40px rgba(134, 239, 172, 0.15),
+    0 0 40px rgba(134, 239, 172, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+:not(.dark) .section-card:hover::before {
+  background: linear-gradient(135deg, 
+    rgba(134, 239, 172, 0.08) 0%,
+    rgba(74, 222, 128, 0.04) 50%,
+    rgba(187, 247, 208, 0.06) 100%);
+}
+
+/* Tema oscuro (mantener) */
+.dark .section-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(81, 228, 184, 0.1);
+}
+
+.dark .section-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -334,7 +676,7 @@
   z-index: -1;
 }
 
-.section-card:hover {
+.dark .section-card:hover {
   transform: translateY(-8px);
   border-color: rgba(81, 228, 184, 0.2);
   background: rgba(255, 255, 255, 0.08);
@@ -343,25 +685,66 @@
     0 0 40px rgba(81, 228, 184, 0.1);
 }
 
-.section-card:hover::before {
+.dark .section-card:hover::before {
   background: linear-gradient(135deg, 
     rgba(81, 228, 184, 0.04) 0%,
     rgba(33, 85, 78, 0.02) 50%,
     rgba(81, 228, 184, 0.04) 100%);
 }
 
-/* Efectos para proyectos */
+/* Proyectos adaptados para tema claro */
 .project-card {
-  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(81, 228, 184, 0.08);
   border-radius: 20px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
 
-.project-card::after {
+/* Tema claro */
+:not(.dark) .project-card {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(134, 239, 172, 0.15);
+  box-shadow: 0 8px 25px rgba(134, 239, 172, 0.08);
+}
+
+:not(.dark) .project-card::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    rgba(134, 239, 172, 0.2),
+    transparent 30%,
+    rgba(74, 222, 128, 0.1) 70%,
+    transparent);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+:not(.dark) .project-card:hover::after {
+  opacity: 1;
+}
+
+:not(.dark) .project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(134, 239, 172, 0.3);
+  box-shadow: 
+    0 16px 32px rgba(134, 239, 172, 0.12),
+    0 0 20px rgba(134, 239, 172, 0.08);
+}
+
+/* Tema oscuro para proyectos (mantener) */
+.dark .project-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(81, 228, 184, 0.08);
+}
+
+.dark .project-card::after {
   content: '';
   position: absolute;
   top: -2px;
@@ -379,28 +762,40 @@
   z-index: -1;
 }
 
-.project-card:hover::after {
+.dark .project-card:hover::after {
   opacity: 1;
 }
 
-.project-card:hover {
+.dark .project-card:hover {
   transform: translateY(-6px);
   border-color: rgba(81, 228, 184, 0.15);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
 }
 
-/* Aurora line */
+/* Aurora line adaptada para tema claro */
 .aurora-line {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(120deg, rgba(81,228,184,0.05), transparent 70%),
-              linear-gradient(300deg, rgba(120,180,255,0.04), transparent 70%);
   z-index: -9;
   pointer-events: none;
   animation: auroraMove 40s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+:not(.dark) .aurora-line {
+  background: linear-gradient(120deg, rgba(134, 239, 172, 0.08), transparent 70%),
+              linear-gradient(300deg, rgba(74, 222, 128, 0.06), transparent 70%);
+  opacity: 1;
+}
+
+.dark .aurora-line {
+  background: linear-gradient(120deg, rgba(81,228,184,0.05), transparent 70%),
+              linear-gradient(300deg, rgba(120,180,255,0.04), transparent 70%);
+  opacity: 1;
 }
 
 @keyframes auroraMove {
@@ -409,7 +804,7 @@
   100% { transform: translateX(0) translateY(0); }
 }
 
-/* Constellation overlay */
+/* Constellation overlay adaptada para tema claro */
 .constellation-overlay {
   position: fixed;
   top: 0;
@@ -420,11 +815,23 @@
   z-index: -8;
   background-image: url('/constellations.svg');
   background-size: cover;
-  opacity: 0.06;
-  mix-blend-mode: lighten;
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
-/* Stardust glow */
+:not(.dark) .constellation-overlay {
+  opacity: 0.04;
+  filter: hue-rotate(120deg) brightness(1.2);
+}
+
+.dark .constellation-overlay {
+  opacity: 0.06;
+  mix-blend-mode: lighten;
+  filter: none;
+}
+
+/* Stardust glow adaptado para tema claro */
 .stardust-glow {
   position: fixed;
   bottom: -10%;
@@ -432,11 +839,22 @@
   transform: translateX(-50%);
   width: 150%;
   height: 200px;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.03), transparent 80%);
   z-index: -9;
   pointer-events: none;
   filter: blur(20px);
   animation: glowShift 40s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+:not(.dark) .stardust-glow {
+  background: radial-gradient(ellipse at center, rgba(134, 239, 172, 0.06), transparent 80%);
+  opacity: 1;
+}
+
+.dark .stardust-glow {
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.03), transparent 80%);
+  opacity: 1;
 }
 
 @keyframes glowShift {
