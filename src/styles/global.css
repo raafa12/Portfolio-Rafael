@@ -14,9 +14,9 @@
   --primary-red: #c70038;
   --primary-wine: #920c3f;
   --primary-purple: #581845;
-  --space-white: #fff9f5;
-  --space-glow: rgba(255, 195, 0, 0.2);
-  --space-highlight: rgba(199, 0, 56, 0.1);
+  --space-white: #fffdf9;
+  --space-glow: rgba(255, 195, 0, 0.25);
+  --space-highlight: rgba(199, 0, 56, 0.12);
   --text-dark: #1a1a2e;
 }
 
@@ -40,20 +40,25 @@
   height: 200%;
   background: linear-gradient(
     135deg,
-    #fffaf2 0%,
-    #ffe8e8 25%,
-    #ffead0 40%,
-    #ffd8a8 60%,
-    #ffc86b 80%,
-    #fffaf2 100%
+    #ffc300 0%,
+    #fdfbf7 6%,
+    #fdf2e9 12%,
+    #fbead3 22%,
+    #f9e2bd 32%,
+    #f7daa7 42%,
+    #f5d291 52%,
+    #ff9a4d 62%,
+    #ff5833 78%,
+    #c70038 92%,
+    #c70038 100%
   );
-  animation: gradientShiftLight 30s ease-in-out infinite;
+  animation: gradientShiftLight 35s ease-in-out infinite;
   z-index: -10;
 }
 
 @keyframes gradientShiftLight {
-  0%, 100% { transform: translateX(-25%) translateY(-25%); }
-  50% { transform: translateX(-50%) translateY(-50%); }
+  0%, 100% { transform: translateX(-50%) translateY(-50%); }
+  50% { transform: translateX(-25%) translateY(-25%); }
 }
 
 .sun-rays {
@@ -957,4 +962,20 @@
 @keyframes glowShift {
   0%, 100% { transform: translateX(-50%) scale(1); }
   50% { transform: translateX(-45%) scale(1.05); }
+}
+
+/* ===== Estrellas tema claro - contraste mejorado ===== */
+:root:not(.dark) .starfield-container {
+  mix-blend-mode: screen;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.95), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 250, 220, 0.9), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255, 235, 200, 0.85), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(255, 245, 210, 0.9), transparent),
+    radial-gradient(1px 1px at 200px 100px, rgba(255, 235, 180, 0.85), transparent),
+    radial-gradient(1px 1px at 250px 50px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 300px 90px, rgba(255, 225, 160, 0.8), transparent),
+    radial-gradient(1px 1px at 350px 120px, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(1px 1px at 380px 40px, rgba(255, 250, 220, 0.85), transparent);
 }
