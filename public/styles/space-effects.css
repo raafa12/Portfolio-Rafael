@@ -1,0 +1,500 @@
+/* ============================= */
+/* 🌟 SPACE EFFECTS - LIGHT & DARK MODES */
+/* ============================= */
+.space-effects-container {
+  position: fixed;
+  inset: 0;
+  z-index: -8;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* Utility classes for mode-specific elements */
+.light-only { display: none; }
+.dark-only { display: block; }
+
+:root:not(.dark) .light-only { display: block; }
+:root:not(.dark) .dark-only { display: none; }
+
+/* Light Mode Background */
+:root:not(.dark) .space-effects-container {
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.8) 0%, rgba(255,248,240,0.9) 100%);
+}
+
+/* Dark Mode Background */
+.dark .space-effects-container {
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.9) 0%, rgba(10,11,20,0.95) 100%);
+}
+
+/* ===== LIGHT MODE ELEMENTS ===== */
+/* Sun Rays */
+.sun-ray {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 200%;
+  background: linear-gradient(to bottom, 
+    rgba(255, 200, 100, 0.1) 0%,
+    rgba(255, 180, 80, 0.3) 20%,
+    rgba(255, 160, 60, 0.1) 40%,
+    transparent 100%
+  );
+  transform-origin: 0 0;
+  animation: sunRayPulse 10s infinite ease-in-out;
+  opacity: 0;
+  z-index: -9;
+}
+
+/* Light Mode Clouds */
+.light-cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  filter: blur(10px);
+  animation: floatCloud 60s infinite linear;
+  opacity: 0.3;
+  z-index: -9;
+}
+
+/* ===== DARK MODE ELEMENTS ===== */
+/* Galaxies */
+.galaxy {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0.2;
+  animation: galaxyPulse 40s infinite alternate;
+  background: radial-gradient(ellipse at center, rgba(100, 149, 237, 0.15) 0%, transparent 70%);
+  z-index: -9;
+}
+
+/* Shooting Stars */
+.shooting-star {
+  position: absolute;
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0) 0%, 
+    rgba(81, 228, 184, 0.9) 70%, 
+    rgba(255,255,255,0) 100%);
+  transform-origin: left center;
+  animation: shootingStar 15s linear infinite;
+  opacity: 0;
+  filter: drop-shadow(0 0 6px rgba(81, 228, 184, 0.8));
+  z-index: -7;
+}
+
+/* ===== COMMON ELEMENTS ===== */
+/* Twinkling Stars */
+.twinkling-star {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle 5s infinite ease-in-out;
+  opacity: 0;
+  will-change: opacity, transform;
+  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease-out;
+  z-index: -8;
+}
+
+/* Distant Galaxies */
+.galaxy {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(0.5px);
+  opacity: 0.2;
+  animation: galaxyPulse 40s infinite alternate;
+  will-change: transform, opacity;
+  background: radial-gradient(ellipse at center, rgba(100, 149, 237, 0.1) 0%, transparent 70%);
+  transition: transform 10s ease-out, opacity 5s ease;
+}
+
+/* Mini Planets */
+.mini-planet {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #a0c8f0, #6495ed);
+  box-shadow: 0 0 10px 2px rgba(100, 149, 237, 0.3);
+  animation: planetFloat 200s linear infinite;
+  will-change: transform;
+  opacity: 0.3;
+  transition: transform 5s ease-out, opacity 3s ease;
+}
+
+/* Comet */
+.comet {
+  position: absolute;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 70%, rgba(255,255,255,0) 100%);
+  transform-origin: left center;
+  animation: shootingStar 30s linear infinite;
+  opacity: 0;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9));
+  z-index: -7;
+}
+
+.comet::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Shooting Stars */
+.shooting-star {
+  position: absolute;
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 70%, rgba(255,255,255,0) 100%);
+  transform-origin: left center;
+  animation: shootingStar 15s linear infinite;
+  opacity: 0;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.7));
+  z-index: -7;
+}
+
+/* Space Dust */
+.space-dust {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  animation: floatDust 20s infinite linear;
+  will-change: transform;
+  opacity: 0.6;
+  transition: all 0.5s ease-out;
+  z-index: -8;
+}
+
+:root:not(.dark) .space-dust {
+  background: rgba(230, 120, 50, 0.5);
+  box-shadow: 0 0 4px 1px rgba(230, 100, 50, 0.3);
+}
+
+/* Space Debris */
+.debris {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  animation: floatDebris 40s infinite linear;
+  will-change: transform;
+  opacity: 0;
+  transition: transform 1s ease-out, opacity 0.5s ease;
+}
+
+/* Cosmic Rays */
+.cosmic-ray {
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.1) 20%, 
+    rgba(255, 255, 255, 0.3) 50%, 
+    rgba(255, 255, 255, 0.1) 80%, 
+    transparent 100%);
+  animation: rayPulse 15s infinite ease-in-out;
+  will-change: opacity;
+  opacity: 0;
+  z-index: -9;
+}
+
+/* Energy Orbs */
+.energy-orb {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.3);
+  animation: orbPulse 8s infinite ease-in-out;
+  opacity: 0;
+  will-change: transform, opacity;
+  filter: blur(0.5px);
+  transition: all 0.5s ease-out;
+  z-index: -6;
+}
+
+:root:not(.dark) .energy-orb {
+  background: rgba(255, 140, 60, 0.8);
+  box-shadow: 0 0 15px 3px rgba(230, 100, 50, 0.5);
+}
+
+/* Pulsing Stars */
+.pulsar {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.5);
+  animation: pulsate 4s infinite ease-in-out;
+  will-change: transform, opacity;
+  opacity: 0;
+  z-index: -6;
+  transition: all 0.3s ease-out;
+}
+
+:root:not(.dark) .pulsar {
+  background: #ff8c3a;
+  box-shadow: 0 0 8px 2px rgba(230, 100, 50, 0.6);
+}
+
+/* Light Theme Adjustments */
+:root:not(.dark) .shooting-star,
+:root:not(.dark) .comet {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(230, 80, 20, 0.9) 70%, rgba(255,255,255,0) 100%);
+  filter: drop-shadow(0 0 6px rgba(230, 80, 20, 0.8));
+}
+
+:root:not(.dark) .space-dust,
+:root:not(.dark) .debris {
+  background: rgba(230, 80, 20, 0.7);
+  box-shadow: 0 0 4px 1px rgba(230, 80, 20, 0.5);
+}
+
+:root:not(.dark) .energy-orb,
+:root:not(.dark) .pulsar {
+  background: rgba(255, 100, 40, 0.8);
+  box-shadow: 0 0 15px 5px rgba(230, 80, 20, 0.5);
+}
+
+:root:not(.dark) .galaxy {
+  background: radial-gradient(ellipse at center, rgba(230, 100, 50, 0.25) 0%, transparent 70%);
+  opacity: 0.4;
+}
+
+:root:not(.dark) .mini-planet {
+  background: linear-gradient(145deg, #ff9c5f, #ff6b35);
+  box-shadow: 0 0 15px 5px rgba(230, 80, 20, 0.3);
+  opacity: 0.5;
+}
+
+:root:not(.dark) .cosmic-ray {
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    rgba(230, 100, 50, 0.2) 20%, 
+    rgba(230, 80, 20, 0.4) 50%, 
+    rgba(230, 100, 50, 0.2) 80%, 
+    transparent 100%);
+}
+
+/* Increase contrast for light mode */
+:root:not(.dark) .twinkling-star {
+  background: rgba(230, 80, 20, 0.8);
+  box-shadow: 0 0 5px 2px rgba(230, 80, 20, 0.6);
+  opacity: 0.8;
+}
+
+:root:not(.dark) .space-effects-container {
+  opacity: 1;
+}
+
+:root:not(.dark) .comet::after {
+  background: #ff6b35;
+  box-shadow: 0 0 20px 8px rgba(230, 80, 20, 0.6);
+}
+
+:root:not(.dark) .pulsar {
+  box-shadow: 0 0 8px 2px rgba(230, 80, 20, 0.7);
+}
+
+/* Dark Theme Adjustments */
+.dark .shooting-star,
+.dark .comet {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(81, 228, 184, 0.8) 70%, rgba(255,255,255,0) 100%);
+}
+
+.dark .space-dust,
+.dark .debris {
+  background: rgba(81, 228, 184, 0.5);
+}
+
+.dark .energy-orb,
+.dark .pulsar {
+  background: rgba(134, 239, 172, 0.6);
+  box-shadow: 0 0 10px 2px rgba(81, 228, 184, 0.3);
+}
+
+.dark .galaxy {
+  background: radial-gradient(ellipse at center, rgba(81, 180, 228, 0.1) 0%, transparent 70%);
+}
+
+.dark .mini-planet {
+  background: linear-gradient(145deg, #51b4e4, #3388aa);
+  box-shadow: 0 0 15px 3px rgba(81, 180, 228, 0.2);
+}
+
+.dark .cosmic-ray {
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    rgba(81, 180, 228, 0.1) 20%, 
+    rgba(81, 228, 184, 0.3) 50%, 
+    rgba(81, 180, 228, 0.1) 80%, 
+    transparent 100%);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes sunRayPulse {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes floatCloud {
+  0% { transform: translateX(-150%) translateY(0); }
+  100% { transform: translateX(150%) translateY(20px); }
+}
+
+@keyframes galaxyPulse {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.1; }
+  50% { transform: scale(1.1) rotate(2deg); opacity: 0.3; }
+}
+
+@keyframes twinkle {
+  0%, 100% { 
+    opacity: 0.2; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.5);
+  }
+}
+
+:root:not(.dark) .twinkling-star {
+  background: #ff8c3a;
+  box-shadow: 0 0 6px 2px rgba(230, 100, 50, 0.6);
+}
+
+@keyframes galaxyPulse {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 0.1;
+  }
+  50% { 
+    transform: scale(1.2) rotate(5deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes planetFloat {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg);
+  }
+  25% { 
+    transform: translateY(-10px) rotate(2deg);
+  }
+  50% { 
+    transform: translateY(0) rotate(0deg);
+  }
+  75% { 
+    transform: translateY(10px) rotate(-2deg);
+  }
+}
+
+@keyframes floatDebris {
+  0% { 
+    transform: translateY(-20px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% { 
+    opacity: 0.3;
+  }
+  90% { 
+    opacity: 0.3;
+  }
+  100% { 
+    transform: translateY(calc(100vh + 20px)) translateX(50px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes rayPulse {
+  0%, 100% { 
+    opacity: 0;
+  }
+  50% { 
+    opacity: 0.2;
+  }
+}
+
+@keyframes pulsate {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.5;
+    box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.5);
+  }
+  50% { 
+    transform: scale(1.5);
+    opacity: 1;
+    box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.8);
+  }
+}
+
+@keyframes shootingStar {
+  0% {
+    transform: translateX(0) translateY(0) scaleX(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(100vh) scaleX(1);
+    opacity: 0;
+  }
+}
+
+@keyframes floatDust {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+@keyframes orbPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .shooting-star {
+    width: 60px;
+  }
+  
+  .space-dust {
+    width: 1px;
+    height: 1px;
+  }
+}

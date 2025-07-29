@@ -21,37 +21,136 @@ const { description, title } = Astro.props
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
+    <link rel="stylesheet" href="/styles/space-effects.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap");
     </style>
   </head>
   <body class="bg-gray-100 dark:bg-[#0a0b14] text-gray-900 dark:text-white font-[Inter]">
-    <!-- Starfield Background -->
-    <div class="starfield-container"></div>
-    
-    <!-- Nebula Effects -->
-    <div class="nebula nebula-1"></div>
-    <div class="nebula nebula-2"></div>
-    <div class="nebula nebula-3"></div>
-    
-    <!-- Constellation Lines -->
-    <div class="constellation-lines"></div>
-    
-    <!-- Solar Flares -->
-    <div class="solar-flare solar-flare-1 dark:hidden"></div>
-    <div class="solar-flare solar-flare-2 dark:hidden"></div>
-    
-    <!-- Floating Particles -->
-    <div class="space-particle particle-1"></div>
-    <div class="space-particle particle-2"></div>
-    <div class="space-particle particle-3"></div>
-    <div class="space-particle particle-4"></div>
-    <div class="space-particle particle-5"></div>
-    <div class="space-particle particle-6"></div>
+    <!-- Space Effects Container -->
+    <div class="space-effects-container">
+      {/* ===== LIGHT MODE ELEMENTS ===== */}
+      {/* Sun Rays - Only in Light Mode */}
+      {Array.from({ length: 5 }).map((_, i) => (
+        <div 
+          class="sun-ray light-only"
+          style={`
+            transform: rotate(${i * (360/5)}deg);
+            animation-delay: ${i * 2}s;
+          `}
+        ></div>
+      ))}
 
-    <div class="aurora-line"></div>
-    <div class="constellation-overlay"></div>
-    <div class="stardust-glow"></div>
+      {/* Light Mode Clouds */}
+      {Array.from({ length: 3 }).map((_, i) => {
+        const size = 100 + Math.random() * 200;
+        return (
+          <div 
+            class="light-cloud light-only"
+            style={`
+              width: ${size}px;
+              height: ${size * 0.5}px;
+              top: ${Math.random() * 100}%;
+              left: ${Math.random() * 100}%;
+              animation-duration: ${60 + Math.random() * 120}s;
+              opacity: ${0.1 + Math.random() * 0.2};
+            `}
+          ></div>
+        );
+      })}
+
+      {/* ===== DARK MODE ELEMENTS ===== */}
+      {/* Dark Mode Galaxies */}
+      {Array.from({ length: 3 }).map((_, i) => {
+        const size = 200 + Math.random() * 300;
+        return (
+          <div 
+            class="galaxy dark-only"
+            style={`
+              width: ${size}px;
+              height: ${size}px;
+              top: ${-50 + Math.random() * 150}%;
+              left: ${-50 + Math.random() * 150}%;
+              animation-delay: ${Math.random() * 20}s;
+              animation-duration: ${60 + Math.random() * 120}s;
+            `}
+          ></div>
+        );
+      })}
+
+      {/* Shooting Stars - More visible in dark mode */}
+      {Array.from({ length: 5 }).map((_, i) => {
+        const delay = Math.random() * 45;
+        const duration = 1.5 + Math.random() * 2.5;
+        return (
+          <div 
+            class="shooting-star dark-only"
+            style={`
+              top: ${Math.random() * 100}%;
+              left: ${Math.random() * 100}%;
+              transform: rotate(${Math.random() * 360}deg);
+              animation-delay: ${delay}s;
+              animation-duration: ${duration}s;
+            `}
+          ></div>
+        );
+      })}
+
+      {/* ===== COMMON ELEMENTS (Visible in both modes) ===== */}
+      {/* Twinkling Stars */}
+      {Array.from({ length: 30 }).map((_, i) => (
+        <div 
+          class="twinkling-star"
+          style={`
+            top: ${Math.random() * 100}%;
+            left: ${Math.random() * 100}%;
+            animation-delay: ${Math.random() * 5}s;
+            animation-duration: ${3 + Math.random() * 7}s;
+            transform: scale(${0.5 + Math.random() * 1.5});
+          `}
+        ></div>
+      ))}
+
+      {/* Space Dust */}
+      {Array.from({ length: 15 }).map((_, i) => (
+        <div 
+          class="space-dust"
+          style={`
+            top: ${100 + Math.random() * 30}%;
+            left: ${Math.random() * 100}%;
+            animation-delay: ${Math.random() * 20}s;
+            animation-duration: ${20 + Math.random() * 40}s;
+            opacity: ${0.1 + Math.random() * 0.4};
+          `}
+        ></div>
+      ))}
+
+      {/* Energy Orbs */}
+      {Array.from({ length: 5 }).map((_, i) => (
+        <div 
+          class="energy-orb"
+          style={`
+            top: ${Math.random() * 100}%;
+            left: ${Math.random() * 100}%;
+            animation-delay: ${Math.random() * 10}s;
+            animation-duration: ${8 + Math.random() * 20}s;
+          `}
+        ></div>
+      ))}
+
+      {/* Pulsing Stars */}
+      {Array.from({ length: 5 }).map((_, i) => (
+        <div 
+          class="pulsar"
+          style={`
+            top: ${Math.random() * 100}%;
+            left: ${Math.random() * 100}%;
+            animation-delay: ${Math.random() * 5}s;
+            animation-duration: ${3 + Math.random() * 7}s;
+          `}
+        ></div>
+      ))}
+    </div>
     
     <div class="relative z-10 min-h-screen flex flex-col">
       <Header />

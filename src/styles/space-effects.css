@@ -1,0 +1,137 @@
+/* ============================= */
+/* 🌟 SPACE EFFECTS */
+/* ============================= */
+.space-effects-container {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.7;
+}
+
+/* Starfield */
+.starfield-container {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 120px 200px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 300px 150px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 450px 80px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 180px 350px, rgba(255, 255, 255, 0.9), transparent);
+  background-repeat: repeat;
+  background-size: 600px 400px;
+  animation: stellarDrift 120s linear infinite;
+  opacity: 0.4;
+}
+
+/* Constellations */
+.constellation-layer {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(1px 1px at 100px 100px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 250px 180px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 380px 250px, rgba(255, 255, 255, 0.7), transparent);
+  background-size: 500px 300px;
+  animation: constellationRotate 200s linear infinite reverse;
+  opacity: 0.3;
+}
+
+/* Meteors */
+.meteor-shower {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(
+    to bottom, 
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(45deg);
+  animation: meteorFall 8s linear infinite;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Energy Waves */
+.energy-waves {
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg,
+      rgba(255, 255, 255, 0.02) 1deg,
+      transparent 2deg,
+      transparent 90deg
+    );
+  animation: energyPulse 30s ease-in-out infinite alternate;
+  opacity: 0.6;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+/* Animations */
+@keyframes stellarDrift {
+  0% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(-100px) translateY(-50px); }
+  50% { transform: translateX(-200px) translateY(-100px); }
+  75% { transform: translateX(-300px) translateY(-150px); }
+  100% { transform: translateX(-400px) translateY(-200px); }
+}
+
+@keyframes constellationRotate {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes meteorFall {
+  0% {
+    top: -100px;
+    left: 20%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 100vh;
+    left: 80%;
+    opacity: 0;
+  }
+}
+
+@keyframes energyPulse {
+  0% { 
+    transform: rotate(0deg) scale(1);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: rotate(180deg) scale(1.05);
+    opacity: 0.6;
+  }
+  100% { 
+    transform: rotate(360deg) scale(1);
+    opacity: 0.3;
+  }
+}
+
+/* Dark mode adjustments */
+.dark .starfield-container {
+  opacity: 0.6;
+}
+
+.dark .constellation-layer {
+  opacity: 0.4;
+}
+
+.dark .energy-waves {
+  opacity: 0.8;
+}

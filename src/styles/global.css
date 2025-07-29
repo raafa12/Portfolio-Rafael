@@ -49,80 +49,131 @@
 /* 🌟 ANIMACIONES DE FONDO */
 /* ============================= */
 
-/* Campo de estrellas */
-.starfield-container {
+/* Satélites flotantes */
+.satellite {
   position: fixed;
-  inset: 0;
-  z-index: -9;
+  width: 12px;
+  height: 12px;
+  z-index: -6;
   pointer-events: none;
-  background: 
-    repeating-linear-gradient(135deg, 
-      rgba(255, 255, 255, 0.08) 0px, 
-      rgba(255, 255, 255, 0.08) 1px, 
-      transparent 2px, 
-      transparent 30px
-    ),
-    repeating-linear-gradient(45deg, 
-      rgba(255, 255, 255, 0.05) 0px, 
-      rgba(255, 255, 255, 0.05) 1px, 
-      transparent 2px, 
-      transparent 40px
-    );
-  animation: starfield-move 80s linear infinite;
-  opacity: 0.6;
-  transition: opacity 0.5s ease;
+  opacity: 0.4;
+  animation: satelliteOrbit 40s linear infinite;
+  will-change: transform;
 }
 
-@keyframes starfield-move {
-  0% { background-position: 0 0, 0 0; }
-  100% { background-position: 300px 600px, 400px 200px; }
-}
-
-/* Nebulosa sutil */
-.nebula {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(80px);
-  z-index: -10;
-  opacity: 0.3;
-  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), filter 2s;
-  animation: nebulaFade 22s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-@keyframes nebulaFade {
-  0% { 
-    opacity: 0.2; 
-    filter: blur(60px);
-  }
-  100% { 
-    opacity: 0.4; 
-    filter: blur(100px);
-  }
-}
-
-/* Partículas espaciales */
-.space-particle {
-  position: fixed;
+.satellite::before {
+  content: '';
+  position: absolute;
   width: 8px;
   height: 8px;
-  background: radial-gradient(circle, #FF5833 60%, transparent 100%);
-  border-radius: 50%;
-  opacity: 0.1;
-  z-index: -8;
-  pointer-events: none;
-  animation: particleMove 15s linear infinite alternate;
+  background: linear-gradient(45deg, #ff9a5c, #ffb366);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(255, 154, 92, 0.6);
 }
 
-@keyframes particleMove {
-  0% { 
-    transform: translateY(0) scale(1);
-    opacity: 0.05;
-  }
-  100% { 
-    transform: translateY(60px) scale(1.1);
-    opacity: 0.15;
-  }
+.satellite::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 154, 92, 0.8), transparent);
+  top: 3px;
+  left: -6px;
+  border-radius: 1px;
+}
+
+.dark .satellite::before {
+  background: linear-gradient(45deg, #51e4b8, #86efac);
+  box-shadow: 0 0 12px rgba(81, 228, 184, 0.8);
+}
+
+.dark .satellite::after {
+  background: linear-gradient(90deg, transparent, rgba(81, 228, 184, 0.9), transparent);
+}
+
+/* Código binario flotante */
+.binary-rain {
+  position: fixed;
+  color: rgba(255, 154, 92, 0.3);
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: -7;
+  pointer-events: none;
+  animation: binaryFall 25s linear infinite;
+  will-change: transform;
+}
+
+.dark .binary-rain {
+  color: rgba(81, 228, 184, 0.4);
+  text-shadow: 0 0 8px rgba(81, 228, 184, 0.3);
+}
+
+/* Nodos de red conectados */
+.network-node {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 140, 80, 0.8), transparent);
+  z-index: -6;
+  pointer-events: none;
+  animation: nodeFloat 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+.dark .network-node {
+  background: radial-gradient(circle, rgba(81, 228, 184, 0.9), transparent);
+  box-shadow: 0 0 10px rgba(81, 228, 184, 0.4);
+}
+
+.network-connection {
+  position: fixed;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 140, 80, 0.2), transparent);
+  z-index: -7;
+  pointer-events: none;
+  animation: connectionPulse 15s ease-in-out infinite;
+  will-change: opacity;
+}
+
+.dark .network-connection {
+  background: linear-gradient(90deg, transparent, rgba(81, 228, 184, 0.3), transparent);
+}
+
+/* Elementos de código flotante */
+.code-fragment {
+  position: fixed;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 12px;
+  color: rgba(255, 120, 60, 0.25);
+  z-index: -8;
+  pointer-events: none;
+  animation: codeFloat 35s linear infinite;
+  will-change: transform, opacity;
+}
+
+.dark .code-fragment {
+  color: rgba(147, 197, 253, 0.3);
+  text-shadow: 0 0 6px rgba(147, 197, 253, 0.2);
+}
+
+/* Orbes de energía */
+.energy-orb {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 107, 107, 0.8), transparent);
+  z-index: -5;
+  pointer-events: none;
+  animation: orbPulse 12s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.dark .energy-orb {
+  background: radial-gradient(circle, rgba(196, 181, 253, 0.9), transparent);
+  box-shadow: 0 0 15px rgba(196, 181, 253, 0.4);
 }
 
 /* Ajustes para modo oscuro */
@@ -423,12 +474,149 @@
 /* Reducir motion para usuarios que lo prefieran */
 @media (prefers-reduced-motion: reduce) {
   .starfield-container,
-  .cosmic-dust {
-    animation: none;
+  .cosmic-dust,
+  .satellite,
+  .binary-rain,
+  .network-node,
+  .network-connection,
+  .code-fragment,
+  .energy-orb {
+    animation: none !important;
   }
   
   .section-card,
   .project-card {
     transition: none;
   }
+}
+
+/* ============================= */
+/* 🌟 ANIMACIONES DE FONDO */
+/* ============================= */
+
+/* Satélites flotantes */
+.satellite {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  z-index: -6;
+  pointer-events: none;
+  opacity: 0.4;
+  animation: satelliteOrbit 40s linear infinite;
+  will-change: transform;
+}
+
+.satellite::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(45deg, #ff9a5c, #ffb366);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(255, 154, 92, 0.6);
+}
+
+.satellite::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 154, 92, 0.8), transparent);
+  top: 3px;
+  left: -6px;
+  border-radius: 1px;
+}
+
+.dark .satellite::before {
+  background: linear-gradient(45deg, #51e4b8, #86efac);
+  box-shadow: 0 0 12px rgba(81, 228, 184, 0.8);
+}
+
+.dark .satellite::after {
+  background: linear-gradient(90deg, transparent, rgba(81, 228, 184, 0.9), transparent);
+}
+
+/* Código binario flotante */
+.binary-rain {
+  position: fixed;
+  color: rgba(255, 154, 92, 0.3);
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: -7;
+  pointer-events: none;
+  animation: binaryFall 25s linear infinite;
+  will-change: transform;
+}
+
+.dark .binary-rain {
+  color: rgba(81, 228, 184, 0.4);
+  text-shadow: 0 0 8px rgba(81, 228, 184, 0.3);
+}
+
+/* Nodos de red conectados */
+.network-node {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 140, 80, 0.8), transparent);
+  z-index: -6;
+  pointer-events: none;
+  animation: nodeFloat 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+.dark .network-node {
+  background: radial-gradient(circle, rgba(81, 228, 184, 0.9), transparent);
+  box-shadow: 0 0 10px rgba(81, 228, 184, 0.4);
+}
+
+.network-connection {
+  position: fixed;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 140, 80, 0.2), transparent);
+  z-index: -7;
+  pointer-events: none;
+  animation: connectionPulse 15s ease-in-out infinite;
+  will-change: opacity;
+}
+
+.dark .network-connection {
+  background: linear-gradient(90deg, transparent, rgba(81, 228, 184, 0.3), transparent);
+}
+
+/* Elementos de código flotante */
+.code-fragment {
+  position: fixed;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 12px;
+  color: rgba(255, 120, 60, 0.25);
+  z-index: -8;
+  pointer-events: none;
+  animation: codeFloat 35s linear infinite;
+  will-change: transform, opacity;
+}
+
+.dark .code-fragment {
+  color: rgba(147, 197, 253, 0.3);
+  text-shadow: 0 0 6px rgba(147, 197, 253, 0.2);
+}
+
+/* Orbes de energía */
+.energy-orb {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 107, 107, 0.8), transparent);
+  z-index: -5;
+  pointer-events: none;
+  animation: orbPulse 12s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.dark .energy-orb {
+  background: radial-gradient(circle, rgba(196, 181, 253, 0.9), transparent);
+  box-shadow: 0 0 15px rgba(196, 181, 253, 0.4);
 }
