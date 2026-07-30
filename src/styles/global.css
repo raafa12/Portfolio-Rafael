@@ -25,7 +25,7 @@
   overflow-x: hidden;
 }
 
-/* Base Sky Gradient - Clean and calm */
+/* Base Sky Gradient - clean at the top, warming toward the horizon */
 :root::before {
   content: '';
   position: fixed;
@@ -34,15 +34,16 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(180deg,
-    #EAF4FD 0%,
-    #F2F8FD 25%,
-    #F8FBFE 50%,
-    #FFFFFF 100%
+    #E8F2FD 0%,
+    #F1F8FD 22%,
+    #FDF6EC 55%,
+    #FFEBD2 78%,
+    #FFDDB0 100%
   );
   z-index: -10;
 }
 
-/* Soft warm glow near the sun, kept subtle */
+/* Solar flow — a slow-drifting warm glow, the light-mode counterpart to the dark cosmic nebulas */
 :root::after {
   content: '';
   position: fixed;
@@ -51,9 +52,23 @@
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(circle 700px at 85% 0%, rgba(255, 195, 0, 0.10), transparent 60%),
-    radial-gradient(circle 600px at 5% 100%, rgba(126, 200, 227, 0.10), transparent 60%);
+    radial-gradient(circle 750px at 88% 5%, rgba(255, 170, 60, 0.30), transparent 65%),
+    radial-gradient(circle 650px at 12% 95%, rgba(255, 145, 40, 0.22), transparent 65%),
+    radial-gradient(circle 500px at 50% 60%, rgba(255, 195, 100, 0.12), transparent 70%);
   z-index: -9;
+  filter: blur(50px);
+  animation: solarFlow 30s ease-in-out infinite alternate;
+}
+
+@keyframes solarFlow {
+  0% {
+    transform: translate(0, 0) scale(1);
+    filter: blur(50px) brightness(1);
+  }
+  100% {
+    transform: translate(-25px, 20px) scale(1.06);
+    filter: blur(55px) brightness(1.08);
+  }
 }
 
 /* No starfield in daylight */
@@ -81,6 +96,28 @@
   background: radial-gradient(circle, rgba(255, 205, 120, 0.55), transparent 70%) !important;
   box-shadow: 0 0 14px 4px rgba(255, 195, 100, 0.25) !important;
   filter: blur(1.5px);
+}
+
+/* The sun — anchors the existing sun-ray lines, which had no visible source before */
+.day-sun {
+  position: fixed;
+  top: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 200, 110, 0.9) 0%, rgba(255, 170, 70, 0.5) 45%, transparent 75%);
+  filter: blur(4px);
+  z-index: -9;
+  opacity: 0.7;
+  pointer-events: none;
+  animation: sunGlow 8s ease-in-out infinite;
+}
+
+@keyframes sunGlow {
+  0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.85; transform: translateX(-50%) scale(1.05); }
 }
 
 /* A daytime moon — visible in a clear sky, quiet nod to the dark-mode theme */
@@ -405,10 +442,10 @@
 
 /* Light Mode Cards */
 :root:not(.dark) .section-card {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(30, 41, 59, 0.08);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 150, 60, 0.18);
   box-shadow:
-    0 4px 20px rgba(30, 41, 59, 0.06),
+    0 4px 24px rgba(255, 140, 50, 0.10),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
@@ -418,10 +455,10 @@
 
 :root:not(.dark) .section-card:hover {
   transform: translateY(-4px);
-  background: rgba(255, 255, 255, 1);
-  border-color: rgba(30, 41, 59, 0.14);
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(255, 140, 50, 0.32);
   box-shadow:
-    0 12px 30px rgba(30, 41, 59, 0.10),
+    0 14px 34px rgba(255, 140, 50, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
@@ -465,16 +502,16 @@
 }
 
 :root:not(.dark) .project-card {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(30, 41, 59, 0.08);
-  box-shadow: 0 4px 20px rgba(30, 41, 59, 0.06);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 150, 60, 0.18);
+  box-shadow: 0 4px 24px rgba(255, 140, 50, 0.10);
 }
 
 :root:not(.dark) .project-card:hover {
   transform: translateY(-6px);
-  background: rgba(255, 255, 255, 1);
-  border-color: rgba(30, 41, 59, 0.14);
-  box-shadow: 0 12px 30px rgba(30, 41, 59, 0.10);
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(255, 140, 50, 0.32);
+  box-shadow: 0 14px 34px rgba(255, 140, 50, 0.16);
 }
 
 .dark .project-card {

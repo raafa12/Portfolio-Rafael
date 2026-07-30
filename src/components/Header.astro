@@ -54,10 +54,10 @@ const isActive = (item) => {
            hover:shadow-2xl hover:scale-[1.02]"
   >
     <!-- Animated background -->
-    <div class="absolute inset-0 bg-gradient-to-r from-green-400/5 via-transparent to-green-400/5 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-orange-400/10 via-transparent to-orange-400/10 dark:from-green-400/5 dark:to-green-400/5 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
     
     <!-- Subtle border glow -->
-    <div class="absolute inset-0 rounded-full bg-gradient-to-r from-green-400/10 via-transparent to-green-400/10 blur-sm opacity-0 hover:opacity-50 transition-opacity duration-300"></div>
+    <div class="absolute inset-0 rounded-full bg-gradient-to-r from-orange-400/15 via-transparent to-orange-400/15 dark:from-green-400/10 dark:to-green-400/10 blur-sm opacity-0 hover:opacity-50 transition-opacity duration-300"></div>
     
     {
       navItems.map((link) => (
@@ -66,9 +66,9 @@ const isActive = (item) => {
             'relative px-3 sm:px-4 py-1.5 sm:py-2 transition-all duration-300 rounded-full z-10',
             'group overflow-hidden',
             isActive(link) 
-              ? 'text-[#21554E] dark:text-green-400' 
-              : 'text-[#2D3748] hover:text-[#164038] dark:text-gray-300 dark:hover:text-green-400',
-            'hover:bg-white/20 dark:hover:bg-white/10',
+              ? 'text-[#B45309] dark:text-green-400' 
+              : 'text-[#2D3748] hover:text-[#B45309] dark:text-gray-300 dark:hover:text-green-400',
+            'hover:bg-orange-400/10 dark:hover:bg-white/10',
             'hover:scale-105 hover:-translate-y-0.5',
             'active:scale-95'
           ]}
@@ -76,7 +76,7 @@ const isActive = (item) => {
           href={link.url}
         >
           <!-- Background hover effect -->
-          <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 to-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-orange-400/10 to-amber-500/10 dark:from-green-400/10 dark:to-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
           
           <!-- Text content -->
           <span class="relative z-10 transition-all duration-300 group-hover:font-semibold">
@@ -85,7 +85,7 @@ const isActive = (item) => {
           
           <!-- Active/Hover indicator -->
           <span class:list={[
-            'absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-green-400 to-green-500 transition-all duration-300 rounded-full',
+            'absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-orange-400 to-amber-500 dark:from-green-400 dark:to-green-500 transition-all duration-300 rounded-full',
             isActive(link) ? 'w-3/4 opacity-100' : 'w-0 opacity-0 group-hover:w-1/2 group-hover:opacity-100'
           ]}></span>
           
@@ -113,15 +113,23 @@ const isActive = (item) => {
     inset: -1px;
     padding: 1px;
     background: linear-gradient(45deg, 
-      rgba(81, 228, 184, 0.3), 
-      rgba(120, 180, 255, 0.2), 
-      rgba(81, 228, 184, 0.3)
+      rgba(255, 160, 60, 0.35), 
+      rgba(255, 140, 40, 0.2), 
+      rgba(255, 160, 60, 0.35)
     );
     border-radius: inherit;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
     opacity: 0;
     animation: borderPulse 4s ease-in-out infinite;
+  }
+
+  :global(.dark) #header-nav::before {
+    background: linear-gradient(45deg, 
+      rgba(81, 228, 184, 0.3), 
+      rgba(120, 180, 255, 0.2), 
+      rgba(81, 228, 184, 0.3)
+    );
   }
 
   #header-nav:hover::before {
@@ -148,11 +156,11 @@ const isActive = (item) => {
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
             if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-green-600", "dark:text-green-400")
+              item.classList.add("text-amber-700", "dark:text-green-400")
               item.querySelector("span:last-of-type")?.classList.add("w-3/4", "opacity-100")
               item.querySelector("span:last-of-type")?.classList.remove("w-0", "opacity-0")
             } else {
-              item.classList.remove("text-green-600", "dark:text-green-400")
+              item.classList.remove("text-amber-700", "dark:text-green-400")
               item.querySelector("span:last-of-type")?.classList.remove("w-3/4", "opacity-100")
               item.querySelector("span:last-of-type")?.classList.add("w-0", "opacity-0")
             }
