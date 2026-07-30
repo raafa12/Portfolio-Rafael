@@ -9,13 +9,13 @@
   --primary-green: rgb(134, 239, 172);
   --primary-green-dark: rgb(74, 222, 128);
   --primary-green-light: rgb(187, 247, 208);
-  --text-primary-light: #1a472a;
-  --text-secondary-light: #2d5a3d;
-  --text-accent-light: #0f3818;
+  --text-primary-light: #1E2432;
+  --text-secondary-light: #4B5568;
+  --text-accent-light: #B45309;
 }
 
 /* ============================= */
-/* 🌞 LIGHT MODE - SOLAR SPACE */
+/* 🌞 LIGHT MODE - CLEAR SKY */
 /* ============================= */
 
 :root {
@@ -25,7 +25,7 @@
   overflow-x: hidden;
 }
 
-/* Base Solar Gradient - Vibrant and Warm */
+/* Base Sky Gradient - Clean and calm */
 :root::before {
   content: '';
   position: fixed;
@@ -33,37 +33,16 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(ellipse 150% 100% at 50% 120%, rgba(255, 200, 120, 0.5) 0%, transparent 50%),
-    radial-gradient(ellipse 120% 90% at 20% 10%, rgba(255, 210, 140, 0.4) 0%, transparent 60%),
-    radial-gradient(ellipse 120% 90% at 80% 20%, rgba(255, 220, 150, 0.4) 0%, transparent 60%),
-    linear-gradient(180deg, 
-      #FFE9C5 0%,
-      #FFDFB0 12%,
-      #FFD49A 24%,
-      #FFC985 36%,
-      #FFBE70 48%,
-      #FFB35C 60%,
-      #FFA848 72%,
-      #FF9D35 84%,
-      #FF9225 100%
-    );
+  background: linear-gradient(180deg,
+    #EAF4FD 0%,
+    #F2F8FD 25%,
+    #F8FBFE 50%,
+    #FFFFFF 100%
+  );
   z-index: -10;
-  animation: solarBreathe 25s ease-in-out infinite alternate;
 }
 
-@keyframes solarBreathe {
-  0% { 
-    filter: brightness(1) saturate(1);
-    transform: scale(1);
-  }
-  100% { 
-    filter: brightness(1.08) saturate(1.15);
-    transform: scale(1.02);
-  }
-}
-
-/* Warm Light Nebulas */
+/* Soft warm glow near the sun, kept subtle */
 :root::after {
   content: '';
   position: fixed;
@@ -71,64 +50,30 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(circle 600px at 15% 80%, rgba(255, 200, 100, 0.15), transparent 70%),
-    radial-gradient(circle 700px at 85% 20%, rgba(255, 180, 80, 0.12), transparent 70%),
-    radial-gradient(circle 500px at 50% 50%, rgba(255, 220, 120, 0.1), transparent 70%);
+  background:
+    radial-gradient(circle 700px at 85% 0%, rgba(255, 195, 0, 0.10), transparent 60%),
+    radial-gradient(circle 600px at 5% 100%, rgba(126, 200, 227, 0.10), transparent 60%);
   z-index: -9;
-  filter: blur(60px);
-  animation: nebulaFloat 35s ease-in-out infinite alternate;
-  opacity: 0.8;
 }
 
-@keyframes nebulaFloat {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  100% { transform: translate(30px, -20px) rotate(5deg); }
-}
-
-/* Solar Particles */
-.cosmic-dust {
-  position: fixed;
-  width: 3px;
-  height: 3px;
-  background: radial-gradient(circle, rgba(255, 200, 100, 0.6), transparent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: -5;
-  animation: floatDust 25s infinite linear;
-  box-shadow: 0 0 10px rgba(255, 200, 100, 0.4);
-}
-
-/* Starfield for Light Mode */
-.starfield-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -8;
-  pointer-events: none;
-}
-
+/* No starfield in daylight */
 :root:not(.dark) .starfield-container {
-  background-image: 
-    radial-gradient(2px 2px at 20% 30%, rgba(255, 170, 70, 0.8), transparent),
-    radial-gradient(1.5px 1.5px at 40% 70%, rgba(255, 150, 50, 0.7), transparent),
-    radial-gradient(1px 1px at 60% 40%, rgba(255, 190, 90, 0.6), transparent),
-    radial-gradient(2px 2px at 80% 80%, rgba(255, 140, 40, 0.8), transparent),
-    radial-gradient(1px 1px at 25% 60%, rgba(255, 160, 60, 0.7), transparent),
-    radial-gradient(1.5px 1.5px at 75% 25%, rgba(255, 130, 30, 0.75), transparent),
-    radial-gradient(1px 1px at 50% 90%, rgba(255, 180, 80, 0.6), transparent),
-    radial-gradient(2px 2px at 90% 50%, rgba(255, 120, 20, 0.85), transparent);
-  background-repeat: repeat;
-  background-size: 500px 400px;
-  animation: starMoveLight 60s linear infinite;
-  opacity: 0.5;
+  display: none;
 }
 
-@keyframes starMoveLight {
-  0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(-400px) translateX(-100px); }
+/* Night-only particles have no place in a daytime sky */
+:root:not(.dark) .twinkling-star,
+:root:not(.dark) .pulsar,
+:root:not(.dark) .energy-orb,
+:root:not(.dark) .space-dust,
+:root:not(.dark) .cosmic-dust,
+:root:not(.dark) .shooting-star,
+:root:not(.dark) .galaxy,
+:root:not(.dark) .mini-planet,
+:root:not(.dark) .comet,
+:root:not(.dark) .debris,
+:root:not(.dark) .cosmic-ray {
+  display: none !important;
 }
 
 /* ============================= */
@@ -407,33 +352,24 @@
 
 /* Light Mode Cards */
 :root:not(.dark) .section-card {
-  background: rgba(255, 255, 255, 0.45);
-  border: 1px solid rgba(255, 200, 100, 0.25);
-  box-shadow: 
-    0 8px 32px rgba(255, 180, 80, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(30, 41, 59, 0.08);
+  box-shadow:
+    0 4px 20px rgba(30, 41, 59, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 :root:not(.dark) .section-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, 
-    rgba(255, 220, 150, 0.08) 0%,
-    rgba(255, 200, 120, 0.04) 50%,
-    rgba(255, 180, 100, 0.06) 100%);
-  z-index: -1;
-  border-radius: inherit;
+  content: none;
 }
 
 :root:not(.dark) .section-card:hover {
-  transform: translateY(-6px);
-  background: rgba(255, 255, 255, 0.65);
-  border-color: rgba(255, 180, 80, 0.4);
-  box-shadow: 
-    0 16px 40px rgba(255, 180, 80, 0.18),
-    0 0 40px rgba(255, 200, 100, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(30, 41, 59, 0.14);
+  box-shadow:
+    0 12px 30px rgba(30, 41, 59, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 /* Dark Mode Cards */
@@ -476,17 +412,16 @@
 }
 
 :root:not(.dark) .project-card {
-  background: rgba(255, 255, 255, 0.35);
-  border: 1px solid rgba(255, 190, 90, 0.2);
-  box-shadow: 0 8px 25px rgba(255, 180, 80, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(30, 41, 59, 0.08);
+  box-shadow: 0 4px 20px rgba(30, 41, 59, 0.06);
 }
 
 :root:not(.dark) .project-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(255, 170, 70, 0.35);
-  box-shadow: 
-    0 16px 35px rgba(255, 180, 80, 0.15),
-    0 0 30px rgba(255, 200, 100, 0.1);
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(30, 41, 59, 0.14);
+  box-shadow: 0 12px 30px rgba(30, 41, 59, 0.10);
 }
 
 .dark .project-card {
