@@ -2,6 +2,7 @@
 import GitHub from "../assets/Github.astro"
 import AstroIcon from "../assets/Astro.astro"
 import Tailwind from "../assets/Tailwind.astro"
+import Supabase from "../assets/Supabase.astro"
 import Link from "../assets/Link.astro"
 import LinkButton from "./LinkButton.astro"
 
@@ -16,8 +17,22 @@ const TAGS = {
     class: "bg-[#003159] text-white",
     icon: Tailwind,
   },
+  SUPABASE: {
+    name: "Supabase",
+    class: "bg-[#3ECF8E] text-black",
+    icon: Supabase,
+  },
 }
 const PROJECTS = [
+  {
+    title: "ISO — Marca de streetwear inspirada en baloncesto",
+    description:
+      "Diseñé y desarrollé la web de ISO, una marca de ropa streetwear con eventos de baloncesto 1v1 como motor de lanzamiento. Construí carrito de compra con checkout por WhatsApp, una lista de espera prioritaria conectada a Supabase, y un panel de validación de entradas en tiempo real con lectura de códigos QR para el staff del evento — todo desplegado en producción y usado en un torneo real.",
+    link: "https://isowear.es",
+    github: "https://github.com/raafa12/iso-web",
+    image: "/images/iso-hero.png",
+    tags: [TAGS.ASTRO, TAGS.SUPABASE, TAGS.TAILWIND],
+  },
   {
     title: "Aro 3 - Website",
     description:
@@ -34,15 +49,6 @@ const PROJECTS = [
     link: "https://baloncestocalasanz.netlify.app/",
     github: "https://github.com/raafa12/Baloncesto-Calasanz",
     image: "/images/WebCala.png",
-    tags: [TAGS.ASTRO, TAGS.TAILWIND],
-  },
-  {
-    title: "Machos Barber Shop - Aplicación móvil",
-    description:
-      "Aplicación de sistema de reservas para una peluqueria (en desarrollo).",
-    link: "https://adventjs.dev",
-    github: "https://github.com/pheralb/svgl",
-    image: "/images/machos.png",
     tags: [TAGS.ASTRO, TAGS.TAILWIND],
   },
 ]
