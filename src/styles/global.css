@@ -61,11 +61,10 @@
   display: none;
 }
 
-/* Night-only particles have no place in a daytime sky */
+/* Sharp point-like "night stars" have no place in a daytime sky.
+   energy-orb and space-dust stay — restyled below as soft sunlit motes. */
 :root:not(.dark) .twinkling-star,
 :root:not(.dark) .pulsar,
-:root:not(.dark) .energy-orb,
-:root:not(.dark) .space-dust,
 :root:not(.dark) .cosmic-dust,
 :root:not(.dark) .shooting-star,
 :root:not(.dark) .galaxy,
@@ -74,6 +73,60 @@
 :root:not(.dark) .debris,
 :root:not(.dark) .cosmic-ray {
   display: none !important;
+}
+
+/* Sunlit motes — the daytime counterpart to dark mode's stars */
+:root:not(.dark) .energy-orb,
+:root:not(.dark) .space-dust {
+  background: radial-gradient(circle, rgba(255, 205, 120, 0.55), transparent 70%) !important;
+  box-shadow: 0 0 14px 4px rgba(255, 195, 100, 0.25) !important;
+  filter: blur(1.5px);
+}
+
+/* A daytime moon — visible in a clear sky, quiet nod to the dark-mode theme */
+.day-moon {
+  position: fixed;
+  top: 8%;
+  right: 6%;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.95), rgba(226,236,245,0.7) 60%, rgba(226,236,245,0.3) 100%);
+  box-shadow: 0 0 40px rgba(200, 220, 240, 0.4), inset -8px -6px 16px rgba(180, 200, 220, 0.25);
+  z-index: -9;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.day-moon::before,
+.day-moon::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(190, 205, 220, 0.35);
+}
+
+.day-moon::before {
+  width: 18px;
+  height: 18px;
+  top: 22px;
+  left: 20px;
+}
+
+.day-moon::after {
+  width: 10px;
+  height: 10px;
+  bottom: 20px;
+  right: 24px;
+}
+
+@media (max-width: 768px) {
+  .day-moon {
+    width: 56px;
+    height: 56px;
+    top: 6%;
+    right: 8%;
+  }
 }
 
 /* ============================= */

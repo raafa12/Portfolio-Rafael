@@ -30,6 +30,9 @@ const { description, title } = Astro.props
     <!-- Space Effects Container -->
     <div class="space-effects-container">
       {/* ===== LIGHT MODE ELEMENTS ===== */}
+      {/* Daytime Moon */}
+      <div class="day-moon light-only"></div>
+
       {/* Sun Rays - Only in Light Mode */}
       {Array.from({ length: 5 }).map((_, i) => (
         <div 
