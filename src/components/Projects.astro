@@ -27,10 +27,11 @@ const PROJECTS = [
   {
     title: "ISO — Marca de streetwear inspirada en baloncesto",
     description:
-      "Web de una marca de streetwear con torneos de baloncesto 1v1 como motor de lanzamiento. Carrito con checkout por WhatsApp, lista de espera conectada a Supabase y panel de validación de entradas por QR en tiempo real. Desplegada en producción y usada en un torneo real.",
+      "Web de una marca de streetwear con torneos de baloncesto 1v1 como motor de lanzamiento. Carrito con checkout por WhatsApp, lista de espera conectada a Supabase y panel de validación de entradas por QR en tiempo real. El primer torneo (agosto 2026) reunió a más de 300 personas en directo — la web sigue en producción contando esa historia y vendiendo los drops limitados.",
     link: "https://isowear.es",
     github: "https://github.com/raafa12/iso-web",
-    image: "/images/iso-hero.png",
+    image: "/images/iso-torneo.jpg",
+    imagePosition: "object-[center_62%]",
     tags: [TAGS.ASTRO, TAGS.SUPABASE, TAGS.TAILWIND],
   },
   {
@@ -56,7 +57,7 @@ const PROJECTS = [
 
 <div class="grid grid-cols-1 gap-8 sm:gap-12">
   {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
+    PROJECTS.map(({ image, title, description, tags, link, github, imagePosition }) => (
       <article class="group relative overflow-hidden rounded-2xl bg-slate-900/[0.03] backdrop-blur-xl border border-slate-900/10 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:bg-slate-900/[0.05] dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10 dark:shadow-xl dark:hover:shadow-2xl">
         <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden dark:block"></div>
         <div class="relative flex flex-col space-y-6 p-6 sm:space-y-8 sm:p-8 md:flex-row md:space-x-8 md:space-y-0">
@@ -72,7 +73,7 @@ const PROJECTS = [
               <div class="relative aspect-video overflow-hidden">
                 <img 
                   alt={title}
-                  class="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  class={`h-full w-full object-cover ${imagePosition ?? "object-top"} transition-transform duration-700 group-hover:scale-105`}
                   loading="lazy"
                   src={image}
                   width={600}
