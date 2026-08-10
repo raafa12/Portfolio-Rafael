@@ -4,6 +4,7 @@ import AstroIcon from "../assets/Astro.astro"
 import Tailwind from "../assets/Tailwind.astro"
 import Supabase from "../assets/Supabase.astro"
 import ReactIcon from "../assets/React.astro"
+import TypeScriptIcon from "../assets/TypeScript.astro"
 import Link from "../assets/Link.astro"
 import LinkButton from "./LinkButton.astro"
 
@@ -28,17 +29,22 @@ const TAGS = {
     class: "bg-[#20232A] text-[#61DAFB]",
     icon: ReactIcon,
   },
+  TYPESCRIPT: {
+    name: "TypeScript",
+    class: "bg-[#3178C6] text-white",
+    icon: TypeScriptIcon,
+  },
 }
 const PROJECTS = [
   {
     title: "ISO — Marca de streetwear inspirada en baloncesto",
     description:
-      "Web de una marca de streetwear con torneos de baloncesto 1v1 como motor de lanzamiento. Carrito con checkout por WhatsApp y catálogo de productos migrados a React, con estado gestionado en cliente y datos servidos en tiempo real desde Supabase. El primer torneo (agosto 2026) reunió a más de 300 personas en directo.",
+      "Web de una marca de streetwear con torneos de baloncesto 1v1 como motor de lanzamiento. Carrito con checkout por WhatsApp y catálogo de productos en React + TypeScript, con datos servidos en tiempo real desde Supabase. El primer torneo (agosto 2026) reunió a más de 300 personas en directo.",
     link: "https://isowear.es",
     github: "https://github.com/raafa12/iso-web",
     image: "/images/iso-torneo.jpg",
     imagePosition: "object-[center_62%]",
-    tags: [TAGS.REACT, TAGS.ASTRO, TAGS.SUPABASE, TAGS.TAILWIND],
+    tags: [TAGS.REACT, TAGS.TYPESCRIPT, TAGS.ASTRO, TAGS.SUPABASE],
   },
   {
     title: "Aro 3 - Website",
