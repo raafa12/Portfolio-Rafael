@@ -89,7 +89,7 @@ const isActive = (item) => {
           
           <!-- Active/Hover indicator -->
           <span class:list={[
-            'absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-orange-400 to-amber-500 dark:from-green-400 dark:to-green-500 transition-all duration-300 rounded-full',
+            'nav-indicator absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-orange-400 to-amber-500 dark:from-green-400 dark:to-green-500 transition-all duration-300 rounded-full',
             isActive(link) ? 'w-3/4 opacity-100' : 'w-0 opacity-0 group-hover:w-1/2 group-hover:opacity-100'
           ]}></span>
           
@@ -103,8 +103,9 @@ const isActive = (item) => {
     
     <div class="w-px h-5 bg-white/20 dark:bg-white/10 mx-1 sm:mx-2"></div>
 
-    <div class="relative flex items-center gap-2">
-      <LanguageToggle />
+    <LanguageToggle />
+
+    <div class="relative">
       <ThemeToggle class="ml-1" />
     </div>
   </nav>
@@ -162,12 +163,12 @@ const isActive = (item) => {
           navItems.forEach((item) => {
             if (item.getAttribute("aria-label") == entry.target.id) {
               item.classList.add("text-amber-700", "dark:text-green-400")
-              item.querySelector("span:last-of-type")?.classList.add("w-3/4", "opacity-100")
-              item.querySelector("span:last-of-type")?.classList.remove("w-0", "opacity-0")
+              item.querySelector(".nav-indicator")?.classList.add("w-3/4", "opacity-100")
+              item.querySelector(".nav-indicator")?.classList.remove("w-0", "opacity-0")
             } else {
               item.classList.remove("text-amber-700", "dark:text-green-400")
-              item.querySelector("span:last-of-type")?.classList.remove("w-3/4", "opacity-100")
-              item.querySelector("span:last-of-type")?.classList.add("w-0", "opacity-0")
+              item.querySelector(".nav-indicator")?.classList.remove("w-3/4", "opacity-100")
+              item.querySelector(".nav-indicator")?.classList.add("w-0", "opacity-0")
             }
           })
         }
