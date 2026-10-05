@@ -38,8 +38,11 @@ const TAGS = {
 const PROJECTS = [
   {
     title: "ISO — Marca de streetwear inspirada en baloncesto",
+    titleEn: "ISO — Basketball-inspired streetwear brand",
     description:
       "Web de una marca de streetwear con torneos de baloncesto 1v1 como motor de lanzamiento. Carrito con checkout por WhatsApp y catálogo de productos en React + TypeScript, con datos servidos en tiempo real desde Supabase. El primer torneo (agosto 2026) reunió a más de 300 personas en directo.",
+    descriptionEn:
+      "Website for a streetwear brand launched through 1v1 basketball tournaments. Cart with WhatsApp checkout and product catalog built in React + TypeScript, with data served in real time from Supabase. The first tournament (August 2026) drew more than 300 people in person.",
     link: "https://isowear.es",
     github: "https://github.com/raafa12/iso-web",
     image: "/images/iso-torneo.jpg",
@@ -48,8 +51,11 @@ const PROJECTS = [
   },
   {
     title: "Aro 3 - Website",
+    titleEn: "Aro 3 - Website",
     description:
      "One page para un proyecto residencial de una promotora en Santoña, creada desde cero con Astro y Tailwind CSS.",
+    descriptionEn:
+     "One-page site for a residential development project in Santoña, built from scratch with Astro and Tailwind CSS.",
     link: "https://residencialaro3.com/",
     github: "https://github.com/raafa12/ResidencialAro3",
     image: "/images/aro3.png",
@@ -57,8 +63,11 @@ const PROJECTS = [
   },
   {
     title: "Club Baloncesto Calasanz - Website",
+    titleEn: "Club Baloncesto Calasanz - Website",
     description:
       "Digitalización de la sección de baloncesto de un club deportivo, creada desde cero con Astro y Tailwind CSS.",
+    descriptionEn:
+      "Digitalization of a sports club's basketball division, built from scratch with Astro and Tailwind CSS.",
     link: "https://baloncestocalasanz.netlify.app/",
     github: "https://github.com/raafa12/Baloncesto-Calasanz",
     image: "/images/WebCala.png",
@@ -69,7 +78,7 @@ const PROJECTS = [
 
 <div class="grid grid-cols-1 gap-8 sm:gap-12">
   {
-    PROJECTS.map(({ image, title, description, tags, link, github, imagePosition }) => (
+    PROJECTS.map(({ image, title, titleEn, description, descriptionEn, tags, link, github, imagePosition }) => (
       <article class="group relative overflow-hidden rounded-2xl bg-slate-900/[0.03] backdrop-blur-xl border border-slate-900/10 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:bg-slate-900/[0.05] dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10 dark:shadow-xl dark:hover:shadow-2xl">
         <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden dark:block"></div>
         <div class="relative flex flex-col space-y-6 p-6 sm:space-y-8 sm:p-8 md:flex-row md:space-x-8 md:space-y-0">
@@ -102,7 +111,7 @@ const PROJECTS = [
             {/* Title */}
             <h3 class="mb-3 text-xl font-bold text-[#1E2432] dark:text-green-100 sm:text-2xl md:mb-4">
               <span class="relative z-10">
-                {title}
+                <span class="i18n-es">{title}</span><span class="i18n-en" hidden>{titleEn ?? title}</span>
               </span>
             </h3>
             
@@ -120,7 +129,9 @@ const PROJECTS = [
 
             {/* Description */}
             <div class="mb-6 text-sm leading-relaxed text-[#4B5568] dark:text-gray-300 sm:text-base">
-              <p class="relative z-10">{description}</p>
+              <p class="relative z-10">
+                <span class="i18n-es">{description}</span><span class="i18n-en" hidden>{descriptionEn ?? description}</span>
+              </p>
             </div>
 
             {/* Buttons - Stack on mobile, row on larger screens */}
@@ -133,7 +144,7 @@ const PROJECTS = [
                   class="group/btn relative flex w-full items-center justify-center rounded-lg border border-slate-900/15 bg-slate-900/[0.04] px-5 py-2.5 text-sm font-medium text-[#1E2432] backdrop-blur-sm transition-all duration-300 hover:bg-slate-900/[0.08] hover:shadow-md sm:w-auto dark:border-white/20 dark:bg-white/10 dark:text-white/90 dark:hover:bg-white/20 dark:hover:shadow-lg dark:hover:shadow-white/5"
                 >
                   <Link class="size-4 transition-transform duration-300 group-hover/btn:scale-110" />
-                  <span class="ml-2">Ver Proyecto</span>
+                  <span class="ml-2"><span class="i18n-es">Ver Proyecto</span><span class="i18n-en" hidden>View Project</span></span>
                 </a>
               )}
               {github && (
@@ -144,7 +155,7 @@ const PROJECTS = [
                   class="group/btn relative flex w-full items-center justify-center rounded-lg border border-slate-900/10 bg-transparent px-5 py-2.5 text-sm font-medium text-[#1E2432] backdrop-blur-sm transition-all duration-300 hover:bg-slate-900/[0.04] hover:shadow-md sm:w-auto dark:border-white/10 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10 dark:hover:shadow-lg dark:hover:shadow-white/5"
                 >
                   <GitHub class="size-4 transition-transform duration-300 group-hover/btn:scale-110" />
-                  <span class="ml-2">Código Fuente</span>
+                  <span class="ml-2"><span class="i18n-es">Código Fuente</span><span class="i18n-en" hidden>Source Code</span></span>
                 </a>
               )}
             </div>

@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro"
+import LanguageToggle from "./LanguageToggle.astro"
 
 // Obtener la ruta actual para resaltar la sección activa
 const currentPath = Astro.url.pathname;
@@ -8,18 +9,21 @@ const isHome = currentPath === '/';
 const navItems = [
   {
     title: "Proyectos",
+    titleEn: "Projects",
     label: "proyectos",
     url: "/#proyectos",
     id: "proyectos"
   },
   {
     title: "Experiencia",
+    titleEn: "Experience",
     label: "experiencia",
     url: "/#experiencia",
     id: "experiencia"
   },
   {
     title: "Sobre mí",
+    titleEn: "About",
     label: "sobre-mi",
     url: "/#sobre-mi",
     id: "sobre-mi"
@@ -80,7 +84,7 @@ const isActive = (item) => {
           
           <!-- Text content -->
           <span class="relative z-10 transition-all duration-300 group-hover:font-semibold">
-            {link.title}
+            <span class="i18n-es">{link.title}</span><span class="i18n-en" hidden>{link.titleEn}</span>
           </span>
           
           <!-- Active/Hover indicator -->
@@ -98,8 +102,9 @@ const isActive = (item) => {
     }
     
     <div class="w-px h-5 bg-white/20 dark:bg-white/10 mx-1 sm:mx-2"></div>
-    
-    <div class="relative">
+
+    <div class="relative flex items-center gap-2">
+      <LanguageToggle />
       <ThemeToggle class="ml-1" />
     </div>
   </nav>

@@ -1,0 +1,66 @@
+---
+---
+
+<button
+  id="lang-toggle"
+  class="appearance-none border-none flex items-center justify-center h-9 px-3 rounded-full transition-all duration-300 relative overflow-hidden
+         bg-white/10 dark:bg-white/5
+         hover:bg-white/20 dark:hover:bg-white/10
+         hover:scale-110 hover:-translate-y-0.5
+         focus:outline-none focus:ring-2 focus:ring-amber-400/50 dark:focus:ring-green-400/50 focus:ring-offset-2 focus:ring-offset-transparent
+         border border-white/20 dark:border-white/10
+         hover:border-white/30 dark:hover:border-white/20
+         shadow-lg hover:shadow-xl
+         active:scale-95
+         cursor-pointer
+         text-xs font-bold tracking-wide
+         text-gray-700 dark:text-gray-300"
+  aria-label="Cambiar idioma / Switch language"
+>
+  <!-- Background gradient on hover -->
+  <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 via-transparent to-green-400/10 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
+
+  <!-- Subtle glow -->
+  <div class="absolute inset-0 rounded-full bg-gradient-to-r from-green-400/20 via-transparent to-green-400/20 blur-sm opacity-0 hover:opacity-50 transition-opacity duration-300"></div>
+
+  <!-- Label: shows the language you'll switch TO -->
+  <span id="lang-label" class="relative z-10">EN</span>
+</button>
+
+<script is:inline>
+  (function () {
+    function applyLang(lang) {
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll(".i18n-es").forEach((el) => {
+        el.hidden = lang !== "es";
+      });
+      document.querySelectorAll(".i18n-en").forEach((el) => {
+        el.hidden = lang !== "en";
+      });
+
+      const label = document.getElementById("lang-label");
+      if (label) label.textContent = lang === "es" ? "EN" : "ES";
+    }
+
+    function init() {
+      if (localStorage.lang === undefined) {
+        localStorage.lang = "es";
+      }
+      applyLang(localStorage.lang);
+
+      const toggle = document.getElementById("lang-toggle");
+      if (toggle && !toggle.dataset.bound) {
+        toggle.dataset.bound = "true";
+        toggle.addEventListener("click", () => {
+          const next = localStorage.lang === "es" ? "en" : "es";
+          localStorage.lang = next;
+          applyLang(next);
+        });
+      }
+    }
+
+    init();
+    document.addEventListener("astro:page-load", init);
+  })();
+</script>
